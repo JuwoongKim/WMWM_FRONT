@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frame_search_button"
+    android:visibility="visible"
+    android:outlineAmbientShadowColor="#373434">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_search"
+        android:layout_width="80dp"
+        android:paddingVertical="10dp"
+        android:layout_height="wrap_content"
+        android:textColor="#616161"
+        android:textAlignment="center"
+        android:text="login"
+        android:textStyle="italic"
+        android:clickable="true"/>
+
+    <ProgressBar
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        android:id="@+id/btn_progress"/>
+
+
+</FrameLayout>
