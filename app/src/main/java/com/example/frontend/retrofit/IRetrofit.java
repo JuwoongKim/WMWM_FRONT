@@ -1,5 +1,6 @@
 package com.example.frontend.retrofit;
 
+import com.example.frontend.entity.Card;
 import com.example.frontend.entity.LoginRequest;
 import com.example.frontend.entity.LoginResponse;
 import com.example.frontend.entity.Member;
@@ -11,12 +12,26 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface IRetrofit {
-    @POST("/member/test/")  // 모든 유저의 id값만 받아오는 메서드(id 중복체크를 위해)
+    /*Member*/
+
+    // 로그인 (Param: loginRequest)
+    @POST("/member/login/")
     Call<LoginResponse> getLoginResponse(@Body LoginRequest loginRequest);
 
-    @POST("/member/all/")  // 모든 유저의 id값만 받아오는 메서드(id 중복체크를 위해)
+    // 회원 정보 조회 (Param: loginId)
+    @POST("/member/")
+    Call<Member> getMemberInfo(@Body String loginId);
+
+    // 회원 전체 리스트
+    @GET("/member/all/")
     Call<Member> getMember();
 
-    @GET("/member/test/")  // 모든 유저의 id값만 받아오는 메서드(id 중복체크를 위해)
-    Call<Member> getMemberInfo(@Query("loginId") String loginId);
+    
+    
+    
+    /*Card*/
+    @GET("/card/")
+    Call<Card> getCardInfo(@Query("userNo") String userNo);
+
+
 }

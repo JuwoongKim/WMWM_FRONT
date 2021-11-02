@@ -13,12 +13,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.frontend.entity.Card;
 import com.example.frontend.entity.LoginResponse;
 import com.example.frontend.entity.Member;
 import com.example.frontend.retrofit.IRetrofit;
 import com.example.frontend.retrofit.RetrofitClient;
 
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,8 +73,13 @@ public class BlankFragment3 extends Fragment {
         }
     }
 
-    private TextView tv_id;
-    private TextView tv_email;
+    private TextView tv_age;
+    private TextView tv_birthdate;
+    private TextView tv_gender;
+    private TextView tv_mbti;
+    private TextView tv_residence;
+    private TextView tv_univ;
+
     private IRetrofit iRetrofit;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,54 +87,60 @@ public class BlankFragment3 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blank3, container, false);
 
-        tv_id = (TextView) view.findViewById(R.id.tv_id);
-        tv_email = (TextView) view.findViewById(R.id.tv_email);
+
+
+        tv_age= (TextView) view.findViewById(R.id.tv_age);
+        tv_birthdate= (TextView) view.findViewById(R.id.tv_birthdate);
+        tv_gender= (TextView) view.findViewById(R.id.tv_gender);
+        tv_mbti= (TextView) view.findViewById(R.id.tv_mbti);
+        tv_residence= (TextView) view.findViewById(R.id.tv_residence);
+        tv_univ= (TextView) view.findViewById(R.id.tv_univ);
 
         if (getArguments() != null)
         {
-            Log.d("ddddddddddddddddd","Ddddddddddddddddddddd");
-            String loginId = getArguments().getString("loginId"); // 프래그먼트1에서 받아온 값 넣기
-            Log.d("loginId:",loginId);
-
+            String userNo = getArguments().getString("userNo"); // 프래그먼트1에서 받아온 값 넣기
 
             //retrofit 생성
             iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
-            Call<Member> call = iRetrofit.getMemberInfo(loginId);
-            call.enqueue(new Callback<Member>() {
+            Call<Card> call = iRetrofit.getCardInfo(userNo);
+            call.enqueue(new Callback<Card>() {
                 @Override
-                public void onResponse(Call<Member> call, Response<Member> response) {
+                public void onResponse(Call<Card> call, Response<Card> response) {
                     Log.d("retrofit", "Data fetch success");
 
                     if(response.isSuccessful() && response.body() != null){
                         //response.body()를 result에 저장
-                        Member result = response.body();
+                        Card result = response.body();
 
-                        Member memberInfo = result.getMemberInfo();
                         //받은 코드 저장
-                        String email = memberInfo.getEmail().toString();
-                        String pwd = memberInfo.getPwd().toString();
+                        String age = result.getAge().toString();
+                        String birthdate = result.getBirthdate().toString();
+                        String gender = result.getGender().toString();
+                        String mbti = result.getMbti().toString();
+                        String residence = result.getResidence().toString();
+                        String univ = result.getUniv().toString();
 
-                        Log.d("email:", email);
-                        Log.d("pwd:", pwd);
-
-                        tv_id.setText(loginId);
-                        tv_email.setText(email);
+                        tv_age.setText(age);
+                        tv_birthdate.setText(birthdate);
+                        tv_gender.setText(gender);
+                        tv_mbti.setText(mbti);
+                        tv_residence.setText(residence);
+                        tv_univ.setText(univ);
 
                     }
                 }
 
                 @Override
-                public void onFailure(Call<Member> call, Throwable t) {
+                public void onFailure(Call<Card> call, Throwable t) {
+                    Log.d("info::::::", t.toString());
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setTitle("알림")
                             .setMessage("예기치 못한 오류가 발생하였습니다.\n 고객센터에 문의바랍니다.")
                             .setPositiveButton("확인", null)
                             .create()
                             .show();
-
                 }
             });
-
 
         }
 

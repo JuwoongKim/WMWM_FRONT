@@ -6,44 +6,35 @@ import java.util.List;
 
 public class Member {
     /*private String profile;*/
+    @SerializedName("userNo")
+    private String userNo;
+
+    public String getUserNo() {
+        return userNo;
+    }
+
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
+    }
+
+    @SerializedName("email")
     private String email;
+
+    @SerializedName("loginId")
     private String loginId;
+
+    @SerializedName("pwd")
     private String pwd;
+
+    @SerializedName("userName")
     private String userName;
 
     @SerializedName("memberList")
     private List<Member> memberList;
 
     @SerializedName("memberInfo")
-    private Member memberInfo;
+    private List<Member> memberInfo;
 
-    public Member getMemberInfo() {
-        return memberInfo;
-    }
-
-    public void setMemberInfo(Member memberInfo) {
-        this.memberInfo = memberInfo;
-    }
-
-    public List<Member> getMemberList() {
-        return memberList;
-    }
-
-    public void setMemberList(List<Member> memberList) {
-        this.memberList = memberList;
-    }
-
-/*    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
-    }*/
-
-    public Member(){
-
-    }
 
     public String getEmail() {
         return email;
@@ -75,5 +66,21 @@ public class Member {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public List<Member> getMemberList() {
+        return memberList;
+    }
+
+    public void setMemberList(List<Member> memberList) {
+        this.memberList = memberList;
+    }
+
+    public List<Member> getMemberInfo() {
+        return memberInfo;
+    }
+
+    public void setMemberInfo(List<Member> memberInfo) {
+        this.memberInfo = memberInfo;
     }
 }

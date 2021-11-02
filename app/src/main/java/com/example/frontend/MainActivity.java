@@ -30,7 +30,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity{
-    //String Tag = "Retrofit";
 
     private RetrofitClient retrofitClient;
     private IRetrofit iRetrofit;
@@ -48,13 +47,12 @@ public class MainActivity extends AppCompatActivity{
         search_pw_text = findViewById(R.id.search_pw_text);
         btn_search = (Button)findViewById(R.id.btn_search);
 
-
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String loginId = search_id_text.getText().toString();
                 String pwd = search_pw_text.getText().toString();
-                hideKeyboard();
+                //hideKeyboard();
 
                 //로그인 정보 미입력 시
                 if (loginId.trim().length() == 0 || pwd.trim().length() == 0 || loginId == null || pwd == null) {
@@ -121,9 +119,6 @@ public class MainActivity extends AppCompatActivity{
 
                     String success = "200"; //로그인 성공
                     String errorId = "300"; //계정 불일치
-
-                    Log.d("result:", String.valueOf(result));
-                    Log.d("resultCode:", resultCode);
 
                     if(resultCode.equals(success)){
                         String loginId = search_id_text.getText().toString();

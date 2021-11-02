@@ -2,4 +2,12 @@
     <string name="app_name">FrontEnd</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="error_missing_permissions">Cannot start without required permissions</string>
+
+
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_searching">Searching</string>
+    <string name="status_connected">Connected</string>
 </resources>

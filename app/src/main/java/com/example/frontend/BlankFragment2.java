@@ -88,6 +88,7 @@ public class BlankFragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_blank2, container, false);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
@@ -96,55 +97,58 @@ public class BlankFragment2 extends Fragment {
 
         //arrayList.clear();
 
-        //retrofit 생성
-        iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
-        Call<Member> call = iRetrofit.getMember();
-        call.enqueue(new Callback<Member>() {
-            @Override
-            public void onResponse(Call<Member> call, Response<Member> response) {
-                Log.d("retrofit", "Data fetch success");
+        if (getArguments() != null) {
+            String userNo = getArguments().getString("userNo"); // 프래그먼트1에서 받아온 값 넣기
 
-                if(response.isSuccessful() && response.body() != null){
-                    //response.body()를 result에 저장
-                    Member result = response.body();
-                    Log.d("result", result.toString());
+            //retrofit 생성
+            iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
+            Call<Member> call = iRetrofit.getMember();
+            call.enqueue(new Callback<Member>() {
+                @Override
+                public void onResponse(Call<Member> call, Response<Member> response) {
+                    Log.d("retrofit", "Data fetch success");
 
-                    List<Member> memberList = result.getMemberList();
-                    Log.d("memberList", memberList.toString());
+                    if (response.isSuccessful() && response.body() != null) {
+                        //response.body()를 result에 저장
+                        Member result = response.body();
 
-                    int a=0;
-                    if(memberList != null){
-                        for(Member member: memberList){
-                            a++;
-                            Log.d("member", member.toString());
-                            arrayList.add(member);
+                        List<Member> memberList = result.getMemberList();
+
+                        int a = 0;
+                        if (memberList != null) {
+                            for (Member member : memberList) {
+                                a++;
+                                Log.d("member", member.toString());
+                                arrayList.add(member);
+                            }
+                            adapter.notifyDataSetChanged();
+
+                        } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            builder.setTitle("알림")
+                                    .setMessage("목록 정보가 없습니다.")
+                                    .setPositiveButton("확인", null)
+                                    .create()
+                                    .show();
                         }
-                        adapter.notifyDataSetChanged();
 
-                    }else {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                        builder.setTitle("알림")
-                                .setMessage("목록 정보가 없습니다.")
-                                .setPositiveButton("확인", null)
-                                .create()
-                                .show();
+
                     }
+                }
 
+                @Override
+                public void onFailure(Call<Member> call, Throwable t) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("알림")
+                            .setMessage("예기치 못한 오류가 발생하였습니다.\n 고객센터에 문의바랍니다.")
+                            .setPositiveButton("확인", null)
+                            .create()
+                            .show();
 
                 }
-            }
+            });
+        }
 
-            @Override
-            public void onFailure(Call<Member> call, Throwable t) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("알림")
-                        .setMessage("예기치 못한 오류가 발생하였습니다.\n 고객센터에 문의바랍니다.")
-                        .setPositiveButton("확인", null)
-                        .create()
-                        .show();
-
-            }
-        });
 
         adapter = new CustomAdapter(arrayList, getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
