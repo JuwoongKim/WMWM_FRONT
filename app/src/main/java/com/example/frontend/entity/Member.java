@@ -5,17 +5,8 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Member {
-    /*private String profile;*/
     @SerializedName("userNo")
     private String userNo;
-
-    public String getUserNo() {
-        return userNo;
-    }
-
-    public void setUserNo(String userNo) {
-        this.userNo = userNo;
-    }
 
     @SerializedName("email")
     private String email;
@@ -35,6 +26,14 @@ public class Member {
     @SerializedName("memberInfo")
     private List<Member> memberInfo;
 
+    /*start getter, setter*/
+    public String getUserNo() {
+        return userNo;
+    }
+
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
+    }
 
     public String getEmail() {
         return email;
@@ -83,4 +82,5 @@ public class Member {
     public void setMemberInfo(List<Member> memberInfo) {
         this.memberInfo = memberInfo;
     }
+    /*end getter, setter*/
 }

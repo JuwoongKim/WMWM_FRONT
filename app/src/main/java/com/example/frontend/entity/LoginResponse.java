@@ -6,6 +6,7 @@ public class LoginResponse {
     @SerializedName("result")
     public String resultCode;
 
+    /*start getter, setter*/
     public String getResultCode() {
         return resultCode;
     }
@@ -13,4 +14,5 @@ public class LoginResponse {
     public void setResultCode(String resultCode) {
         this.resultCode = resultCode;
     }
+    /*end getter, setter*/
 }

@@ -12,26 +12,24 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface IRetrofit {
-    /*Member*/
-
-    // 로그인 (Param: loginRequest)
-    @POST("/member/login/")
+    /*Entity: Login*/
+    @POST("/login/")    // 로그인 (Param: loginRequest)
     Call<LoginResponse> getLoginResponse(@Body LoginRequest loginRequest);
 
-    // 회원 정보 조회 (Param: loginId)
-    @POST("/member/")
-    Call<Member> getMemberInfo(@Body String loginId);
 
-    // 회원 전체 리스트
-    @GET("/member/all/")
-    Call<Member> getMember();
+    /*Entity: Member*/
+    @GET("/member/")    // 회원 - 상세 조회 (Param: loginId)
+    Call<Member> getMemberInfo(@Query("loginId") String loginId);
 
-    
-    
-    
-    /*Card*/
-    @GET("/card/")
-    Call<Card> getCardInfo(@Query("userNo") String userNo);
+
+
+    /*Entity: Card*/
+    @GET("/card/my")      // 내 정보 - 상세 조회 (Param: userNo)
+    Call<Card> selectMyInfo(@Query("userNo") String userNo);
+
+    @GET("/friends/all")      // 지인 정보 - 목록 조회 (Param: userNo)
+    Call<Card> selectFriendsInfoList(@Query("userNo") String userNo);
+
 
 
 }

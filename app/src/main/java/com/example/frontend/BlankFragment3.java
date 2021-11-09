@@ -102,7 +102,7 @@ public class BlankFragment3 extends Fragment {
 
             //retrofit 생성
             iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
-            Call<Card> call = iRetrofit.getCardInfo(userNo);
+            Call<Card> call = iRetrofit.selectMyInfo(userNo);
             call.enqueue(new Callback<Card>() {
                 @Override
                 public void onResponse(Call<Card> call, Response<Card> response) {
@@ -110,15 +110,15 @@ public class BlankFragment3 extends Fragment {
 
                     if(response.isSuccessful() && response.body() != null){
                         //response.body()를 result에 저장
-                        Card result = response.body();
+                        Card cardInfo = response.body().getCardInfo().get(0);
 
                         //받은 코드 저장
-                        String age = result.getAge().toString();
-                        String birthdate = result.getBirthdate().toString();
-                        String gender = result.getGender().toString();
-                        String mbti = result.getMbti().toString();
-                        String residence = result.getResidence().toString();
-                        String univ = result.getUniv().toString();
+                        String age = cardInfo.getAge().toString();
+                        String birthdate = cardInfo.getBirthdate().toString();
+                        String gender = cardInfo.getGender().toString();
+                        String mbti = cardInfo.getMbti().toString();
+                        String residence = cardInfo.getResidence().toString();
+                        String univ = cardInfo.getUniv().toString();
 
                         tv_age.setText(age);
                         tv_birthdate.setText(birthdate);

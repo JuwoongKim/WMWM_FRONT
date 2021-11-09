@@ -1,5 +1,6 @@
 package com.example.frontend;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,22 +8,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.frontend.entity.Card;
 import com.example.frontend.entity.Member;
 
 import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
 
-    private ArrayList<Member> arrayList = new ArrayList<>();
+    private ArrayList<Card> arrayList = new ArrayList<>();
     private Context context;
 
-    public CustomAdapter(ArrayList<Member> arrayList, Context context) {
+    public CustomAdapter(ArrayList<Card> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -38,15 +41,24 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CustomViewHolder holder, @SuppressLint("RecyclerView") int position) {
 /*        Glide.with(holder.itemView)
                 .load(arrayList.get(position).getProfile())
                 .into(holder.iv_profile);*/
-        holder.tv_id.setText(arrayList.get(position).getLoginId());
-        holder.tv_pwd.setText(arrayList.get(position).getPwd());
-        holder.tv_email.setText(arrayList.get(position).getEmail());
+        holder.tv_id.setText(arrayList.get(position).getAge());
+        holder.tv_pwd.setText(arrayList.get(position).getBirthdate());
+        holder.tv_email.setText(arrayList.get(position).getMbti());
 
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos = position ;
+                if (pos != RecyclerView.NO_POSITION) {
+                    // 데이터 리스트로부터 아이템 데이터 참조.
+                    Log.d("sssssssss::!!!?", arrayList.get(pos).getAge());
+                }
+            }
+        });
 
     }
 
