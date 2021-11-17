@@ -10,8 +10,8 @@
     <!-- LEFT TITLE PART -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_weight="4"
+        android:layout_height="50dp"
+        android:layout_weight="6"
         android:background="@color/trans0"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -24,15 +24,10 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_weight="20"
-            android:paddingBottom="8dp"
-            android:paddingEnd="8dp"
-            android:paddingLeft="2dp"
-            android:paddingRight="8dp"
             android:paddingStart="2dp"
-            android:paddingTop="8dp"
-            />
-
-
+            android:paddingLeft="2dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp" />
 
 
     </RelativeLayout>
@@ -42,12 +37,12 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@color/trans0"
-        android:paddingBottom="10dp"
+        android:paddingBottom="2dp"
         android:paddingEnd="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="7dp"
         android:paddingStart="5dp"
-        android:paddingTop="15dp">
+        android:paddingTop="12dp">
 
 
         <TextView
@@ -78,17 +73,10 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@id/title_userName"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="1dp"
             android:src="@color/contentDividerLine" />
 
-        <TextView
-            style="@style/TitleBadgeTitle"
-            android:id="@+id/title_univ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/title_from_to_dots_divider"
-            android:textSize="12sp"/>
 
 
 

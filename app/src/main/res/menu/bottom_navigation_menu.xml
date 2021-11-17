@@ -16,6 +16,13 @@
         android:title="all"/>
 
     <item
+        android:id="@+id/page_statistics"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_bar_chart_24"
+        android:iconTint="@color/colorPrimary"
+        android:title="statistics"/>
+
+    <item
         android:id="@+id/page_my"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_perm_identity_24"

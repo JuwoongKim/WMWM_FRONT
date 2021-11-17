@@ -34,4 +34,12 @@
         <item name="android:textSize">12dp</item>
     </style>
 
+    <style name="EditTextTheme" parent="AppTheme">
+        <item name="colorControlActivated">@color/mainTextColor</item>
+        <item name="android:textSelectHandle">@color/mainTextColor</item>
+        <item name="android:textColorHighlight">@color/mainTextColor</item>
+        <item name="android:textCursorDrawable">@color/mainTextColor</item>
+    </style>
+
+
 </resources>

@@ -5,7 +5,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
+    <!-- **** 첨부해야할것 , 지도 ddf를 위한 권한 추가 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <!-- Required for Nearby Connections -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -18,6 +20,14 @@
     //이것은 test
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
+    <!-- 전화, 메세지 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.DIAL_PHONE" />
+
+    <!-- 첨부파일 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
 
     <application
@@ -27,10 +37,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCZys2wQFBZRMMm9s5Wbn5kzM0SEQw-63A" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.frontend"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path" />
+        </provider>
+
         <activity
             android:name=".ShareActivity"
-            android:exported="false" />
+            android:exported="true" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -45,6 +72,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
+
+
 
 </manifest>

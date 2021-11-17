@@ -5,6 +5,8 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.annotation.CallSuper;
@@ -15,7 +17,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -125,6 +130,18 @@ public class BlankFragment extends Fragment {
     private TextView friendNameText;
 
 
+    private Spinner typeSpinner;
+    private String[] items = {"typeA","typeB","typeC","typeD","typeE" };
+
+
+
+    String myloginId;
+    String friendLoginId;
+    String activity_type;
+    Double latitude;
+    Double longtitude;
+
+
     // Callbacks for receiving payloads
     private final PayloadCallback payloadCallback =
             new PayloadCallback() {
@@ -164,6 +181,12 @@ public class BlankFragment extends Fragment {
                 public void onConnectionResult(String endpointId, ConnectionResolution result) {
                     if (result.getStatus().isSuccess()) {
                         System.out.println("onConnectionResult: connection succeess");
+                        System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+                        System.out.println(myloginId);
+                        System.out.println(friendLoginId);
+                        System.out.println(activity_type);
+                        System.out.println(latitude);
+                        System.out.println(longtitude);
                         connectionsClient.stopDiscovery();
                         connectionsClient.stopAdvertising();
                         friendEndpointId = endpointId;
@@ -213,6 +236,8 @@ public class BlankFragment extends Fragment {
         statusText = myView.findViewById(R.id.status);
         friendNameText = myView.findViewById(R.id.frinedName);
 
+
+        typeSpinner =myView.findViewById(R.id.first_spinner);
         disconnectButton= myView.findViewById(R.id.disconnect);
         disconnectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -221,6 +246,32 @@ public class BlankFragment extends Fragment {
                 resetAll();
             }
         });
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                getContext(), android.R.layout.simple_spinner_item, items);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        typeSpinner.setAdapter(adapter);
+
+        typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                activity_type= items[position];
+
+                //////////////////////// 여기서 activitiy 완료됨
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
+
+
+
 
 
         shareButton = myView.findViewById(R.id.btn_share);
@@ -232,6 +283,8 @@ public class BlankFragment extends Fragment {
 
                 System.out.println("the test is good ");
 
+                getLocationInfo();
+
                 if (!hasPermissions(getContext(), REQUIRED_PERMISSIONS)) {
                     requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_REQUIRED_PERMISSIONS);
                 }
@@ -239,20 +292,13 @@ public class BlankFragment extends Fragment {
                 if (getArguments() != null)
                 {
                     myName = getArguments().getString("loginId");
+                    myloginId= myName;
                     setMyNameText(myName);
                     System.out.println("=========== the name is =============");
                     System.out.println(myName);
                     findFriend();
+
                 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -333,6 +379,7 @@ public class BlankFragment extends Fragment {
     }
 
     public  void setFriendNameText(String friendName){
+        friendLoginId = friendName;    ///////////////////여기서  friend 이름을 찾는다.
         friendNameText.setText(friendName);
     }
 
@@ -346,4 +393,61 @@ public class BlankFragment extends Fragment {
 
 
     }
+
+
+    public void getLocationInfo(){
+
+        System.out.println("SIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIBALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+
+        LocationManager manager = (LocationManager)getContext().getSystemService(Context.LOCATION_SERVICE);
+
+
+        try{
+
+            System.out.println("SIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIBALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL2");
+            System.out.println("test");
+            Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+            if(location!=null) {
+                System.out.println("test2");
+                System.out.println("SIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIBALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL3");
+                double latitude_ = location.getLatitude();
+                double longtitude_ = location.getLongitude();
+                latitude = latitude_;
+                longtitude =longtitude_;
+
+                String message = "ratitude : " + latitude + "\n longtitute" + longtitude;
+                System.out.println(message);
+
+            }else{
+                System.out.println("SIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIBALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL4");
+            }
+
+
+        }catch (SecurityException e){
+            e.printStackTrace();
+            System.out.println("cant get Location Info");
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

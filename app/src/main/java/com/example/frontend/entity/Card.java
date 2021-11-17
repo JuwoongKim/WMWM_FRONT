@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,9 @@ public class Card {
     @SerializedName("residence")
     private String residence;
 
+    @SerializedName("workType")
+    private String workType;
+
     @SerializedName("univ")
     private String univ;
 
@@ -44,6 +48,15 @@ public class Card {
 
     @SerializedName("email")
     private String email;
+
+    @SerializedName("result")
+    public String resultCode;
+
+    @SerializedName("fileId")
+    private String fileId;
+
+    @SerializedName("fis")
+    private InputStream fis;
 
 
 
@@ -97,6 +110,14 @@ public class Card {
         this.residence = residence;
     }
 
+    public String getWorkType() {
+        return workType;
+    }
+
+    public void setWorkType(String workType) {
+        this.workType = workType;
+    }
+
     public String getUniv() {
         return univ;
     }
@@ -145,17 +166,40 @@ public class Card {
         this.email = email;
     }
 
+    public String getResultCode() {
+        return resultCode;
+    }
+
+    public void setResultCode(String resultCode) {
+        this.resultCode = resultCode;
+    }
+
+    public String getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
+    }
+
+    public InputStream getFis() {
+        return fis;
+    }
+
+    public void setFis(InputStream fis) {
+        this.fis = fis;
+    }
     /*end getter, setter*/
 
 
-    private View.OnClickListener requestBtnClickListener;
+    private View.OnClickListener historyBtnClickListener;
 
-    public View.OnClickListener getRequestBtnClickListener() {
-        return requestBtnClickListener;
+    public View.OnClickListener getHistoryBtnClickListener() {
+        return historyBtnClickListener;
     }
 
-    public void setRequestBtnClickListener(View.OnClickListener requestBtnClickListener) {
-        this.requestBtnClickListener = requestBtnClickListener;
+    public void setHistoryBtnClickListener(View.OnClickListener HistoryBtnClickListener) {
+        this.historyBtnClickListener = historyBtnClickListener;
     }
 
     public Card(String userNo, String age, String birthdate, String gender, String mbti, String residence, String univ) {
@@ -169,6 +213,15 @@ public class Card {
         this.userName = userName;
         this.telno1 = telno1;
         this.email = email;
+    }
+
+    public Card(String userNo, String workType, String residence, String mbti, String univ, String fileId) {
+        this.userNo = userNo;
+        this.workType = workType;
+        this.residence = residence;
+        this.mbti = mbti;
+        this.univ = univ;
+        this.fileId = fileId;
     }
 
 

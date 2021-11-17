@@ -39,10 +39,13 @@
     <string name="content_to2_mock">Woodside, NY 11101</string>
     <string name="title_activity_main2">Main2Activity</string>
 
+    <string name="name_badge" translatable="false">NAME</string>
+    <string name="telno1_badge" translatable="false">TELNO</string>
     <string name="email_badge" translatable="false">EMAIL</string>
     <string name="work_type_badge" translatable="false">WORK TYPE</string>
     <string name="residence_badge" translatable="false">RESIDENCE</string>
     <string name="mbti_badge" translatable="false">MBTI</string>
+    <string name="major_badge" translatable="false">MAJOR</string>
 
     <string name="content_email">dlwpdms1@naver.com</string>
     <string name="content_work_type">CEO of Tesla</string>

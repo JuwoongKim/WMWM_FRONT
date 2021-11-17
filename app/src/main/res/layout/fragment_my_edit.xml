@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#78000000"
+    android:visibility="visible"
     android:orientation="vertical">
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
-        android:elevation="100dp"
-        android:layout_marginTop="-90dp"
-        app:cardCornerRadius="100dp"
         android:layout_width="match_parent"
         android:layout_height="340dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginTop="-90dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="100dp"
+        app:cardCornerRadius="100dp">
 
         <ImageView
             android:id="@+id/image_back"
@@ -29,7 +30,9 @@
             android:layout_height="115dp"
             app:cardCornerRadius="100dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#78000000">
+
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/image1"
@@ -38,7 +41,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:paddingTop="3dp"
-                android:paddingBottom="3dp"/>
+                android:paddingBottom="3dp" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
@@ -76,19 +79,18 @@
         </LinearLayout>
 
 
-
     </androidx.cardview.widget.CardView>
 
     <!-- content body layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/trans0"
         android:orientation="vertical"
-        android:paddingBottom="5dp"
         android:paddingLeft="20dp"
+        android:paddingTop="8dp"
         android:paddingRight="20dp"
-        android:paddingTop="8dp">
-
+        android:paddingBottom="5dp">
 
         <!-- avatar and name part -->
         <RelativeLayout
@@ -103,20 +105,22 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_marginBottom="1dp"
-                android:text="@string/name_badge" />
-
+                android:text="@string/name_badge"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
 
             <TextView
                 android:id="@+id/content_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/content_name_badge"
-                android:layout_alignStart="@id/content_name_badge"
                 android:layout_below="@id/content_name_badge"
+                android:layout_alignStart="@id/content_name_badge"
+                android:layout_alignLeft="@id/content_name_badge"
                 android:textColor="@color/mainTextColor"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -133,10 +137,10 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="3dp"
+            android:layout_height="2dp"
             android:layout_marginTop="4dp"
-            android:src="@color/contentDividerLine" />
+            android:layout_marginBottom="3dp"
+            android:src="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -156,18 +160,22 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/telno1_badge" />
+                    android:text="@string/telno1_badge"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/content_telno1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_telno1_badge"
-                    android:layout_alignStart="@id/content_telno1_badge"
                     android:layout_below="@id/content_telno1_badge"
+                    android:layout_alignStart="@id/content_telno1_badge"
+                    android:layout_alignLeft="@id/content_telno1_badge"
                     android:textColor="@color/mainTextColor"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -191,28 +199,21 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:text="@string/email_badge" />
+                    android:text="@string/email_badge"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/content_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_email_badge"
-                    android:layout_alignStart="@id/content_email_badge"
                     android:layout_below="@id/content_email_badge"
+                    android:layout_alignStart="@id/content_email_badge"
+                    android:layout_alignLeft="@id/content_email_badge"
                     android:textColor="@color/mainTextColor"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_email"
-                    android:layout_alignStart="@id/content_email"
-                    android:layout_below="@id/content_email"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="12sp" />
-
-
 
 
             </RelativeLayout>
@@ -222,15 +223,16 @@
         <!-- divider line -->
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="3dp"
+            android:layout_height="2dp"
             android:layout_marginTop="4dp"
-            android:src="@color/contentDividerLine" />
+            android:layout_marginBottom="3dp"
+            android:src="@color/white" />
 
         <!-- addresses part -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
+            android:layout_marginBottom="-5dp"
             android:baselineAligned="false"
             android:orientation="horizontal">
 
@@ -244,30 +246,24 @@
                     style="@style/ContentMainBadgeTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:text="@string/work_type_badge" />
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/work_type_badge"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/content_work_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_work_type_badge"
-                    android:layout_alignStart="@id/content_work_type_badge"
                     android:layout_below="@id/content_work_type_badge"
+                    android:layout_alignStart="@id/content_work_type_badge"
+                    android:layout_alignLeft="@id/content_work_type_badge"
                     android:textColor="@color/mainTextColor"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/content_work_type_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_work_type"
-                    android:layout_alignStart="@id/content_work_type"
-                    android:layout_below="@id/content_work_type"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="12sp" />
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:theme="@style/EditTextTheme" />
 
             </RelativeLayout>
 
@@ -281,31 +277,24 @@
                     style="@style/ContentMainBadgeTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:text="@string/residence_badge" />
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/residence_badge"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/content_residence"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_residence_badge"
-                    android:layout_alignStart="@id/content_residence_badge"
                     android:layout_below="@id/content_residence_badge"
+                    android:layout_alignStart="@id/content_residence_badge"
+                    android:layout_alignLeft="@id/content_residence_badge"
                     android:textColor="@color/mainTextColor"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/content_residence_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_residence"
-                    android:layout_alignStart="@id/content_residence"
-                    android:layout_below="@id/content_residence"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="12sp" />
-
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:theme="@style/EditTextTheme" />
 
 
             </RelativeLayout>
@@ -315,17 +304,18 @@
         <!-- divider line -->
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="3dp"
+            android:layout_height="2dp"
             android:layout_marginTop="4dp"
-            android:src="@color/contentDividerLine" />
+            android:layout_marginBottom="3dp"
+            android:src="@color/white" />
 
         <!-- dates part -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:baselineAligned="false"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="-5dp">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -337,20 +327,24 @@
                     style="@style/ContentMainBadgeTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:text="@string/mbti_badge" />
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/mbti_badge"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/content_mbti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_mbti_badge"
-                    android:layout_alignStart="@id/content_mbti_badge"
                     android:layout_below="@id/content_mbti_badge"
+                    android:layout_alignStart="@id/content_mbti_badge"
+                    android:layout_alignLeft="@id/content_mbti_badge"
                     android:textColor="@color/mainTextColor"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:theme="@style/EditTextTheme" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -363,44 +357,60 @@
                     style="@style/ContentMainBadgeTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:text="@string/major_badge" />
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/major_badge"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/content_major"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_major_badge"
-                    android:layout_alignStart="@id/content_major_badge"
                     android:layout_below="@id/content_major_badge"
+                    android:layout_alignStart="@id/content_major_badge"
+                    android:layout_alignLeft="@id/content_major_badge"
                     android:textColor="@color/mainTextColor"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:theme="@style/EditTextTheme" />
 
 
             </RelativeLayout>
 
 
-
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#F42A2A"
+                android:textSize="17sp"
+                android:gravity="center"
+                android:text="After editing, click the save button.">
+
+
+            </TextView>
+        </LinearLayout>
     </LinearLayout>
 
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/edit_btn"
+        android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        app:srcCompat="@drawable/ic_baseline_edit_24"
-        android:backgroundTint="#FFD740"
+        android:backgroundTint="#FFCE3B"
         android:contentDescription="@string/email_badge"
-        app:borderWidth="0dp"
         android:elevation="10dp"
-        />
-
+        app:borderWidth="0dp"
+        app:srcCompat="@drawable/ic_baseline_save_alt_24" />
 
 </LinearLayout>
