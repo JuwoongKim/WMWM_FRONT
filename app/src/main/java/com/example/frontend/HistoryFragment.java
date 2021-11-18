@@ -1,13 +1,37 @@
 package com.example.frontend;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+
+import com.example.frontend.entity.Card;
+import com.example.frontend.entity.HistoryRequest;
+import com.example.frontend.entity.HistoryResponse;
+import com.example.frontend.retrofit.IRetrofit;
+import com.example.frontend.retrofit.RetrofitClient;
+import com.ramotion.foldingcell.FoldingCell;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HistoryFragment extends Fragment {
 
@@ -51,13 +75,116 @@ public class HistoryFragment extends Fragment {
         }
     }
 
+
+
+
+    private HistoryAdapter adapter;
+    private ListView theListView;
+    private List<HistoryRequest> list;
+    private ArrayList<HistoryRequest> items = new ArrayList<>();
+
+    private IRetrofit iRetrofit;
+    private Context context;
+
+    private TextView totalText;
+    private TextView titleSubName;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_history, container, false);
+        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_history, container, false);
+
+        theListView = rootView.findViewById(R.id.historyListView);
+        list = new ArrayList<HistoryRequest>();
+
+        totalText= (TextView) rootView.findViewById(R.id.totalText);
+        titleSubName= (TextView) rootView.findViewById(R.id.title_subName);
+
+        if (getArguments() != null) {
+            String userNo = getArguments().getString("userNo"); // 프래그먼트1에서 받아온 값 넣기
+            String seq = getArguments().getString("seq");
+            String userName = getArguments().getString("userName");
+            titleSubName.setText(userName);
+
+            Log.d("도착!!!!!!!!!! 번들 시퀀스 확인",getArguments().getString("seq"));
+            Log.d("도착!!!!!!!!!! 번들 유저내임 확인",getArguments().getString("userName"));
+            //retrofit 생성
+            iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
+            Call<HistoryResponse> call = iRetrofit.getHistoryInfoList(seq);
+            call.enqueue(new Callback<HistoryResponse>() {
+                @Override
+                public void onResponse(Call<HistoryResponse> call, Response<HistoryResponse> response) {
+                    Log.d("retrofit", "Data fetch success");
+
+                    if (response.isSuccessful() && response.body() != null) {
+                        List<HistoryRequest> historyInfoList = response.body().getHistoryInfoList();
+
+                        int a = 0;
+                        if (historyInfoList != null) {
+                            for (HistoryRequest historyInfo : historyInfoList) {
+                                a++;
+
+                                list.add(historyInfo);
+                            }
+                            items.addAll(list);
+
+                            context = container.getContext();
+
+                            // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
+                            adapter = new HistoryAdapter(getContext(), items, (ShareActivity) getActivity());
+
+                            Log.d("여기는 히스토리 프래그먼트 어댑터","생성 후 지점!!!!!!!!!!!");
+                            // set elements to adapter
+                            theListView.setAdapter(adapter);
+
+                            /*총 만남 횟수 세팅*/
+                            String str = "total "+getArguments().getString("total")+ " times";
+                            SpannableStringBuilder ssb = new SpannableStringBuilder(str);
+                            ssb.setSpan(new ForegroundColorSpan(Color.parseColor("#FF0000")), 6, 8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            totalText.setText(ssb);
 
 
-        return view;
+
+                            // set on click event listener to list view
+/*                            theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                                    // toggle clicked cell state
+                                    ((FoldingCell) view).toggle(false);
+                                    // register in adapter that state for selected cell is toggled
+                                    adapter.registerToggle(pos);
+                                }
+                            });*/
+
+                        } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            builder.setTitle("알림")
+                                    .setMessage("목록 정보가 없습니다.")
+                                    .setPositiveButton("확인", null)
+                                    .create()
+                                    .show();
+                        }
+
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<HistoryResponse> call, Throwable t) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("BlankFragment2 Retrofit 알림")
+                            .setMessage("예기치 못한 오류가 발생하였습니다.\n 고객센터에 문의바랍니다.")
+                            .setPositiveButton("확인", null)
+                            .create()
+                            .show();
+
+                }
+            });
+        }
+
+
+        return rootView;
     }
 }

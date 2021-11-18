@@ -4,26 +4,37 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.comix.overwatch.HiveProgressView;
+import com.example.frontend.entity.Member;
+import com.example.frontend.retrofit.IRetrofit;
+import com.example.frontend.retrofit.RetrofitClient;
 import com.google.android.gms.nearby.Nearby;
 import com.google.android.gms.nearby.connection.AdvertisingOptions;
 import com.google.android.gms.nearby.connection.ConnectionInfo;
@@ -40,6 +51,17 @@ import com.google.android.gms.nearby.connection.Strategy;
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate.Status;
 
 import org.w3c.dom.Text;
+
+import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import io.supercharge.funnyloader.FunnyLoader;
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -141,6 +163,8 @@ public class BlankFragment extends Fragment {
     Double latitude;
     Double longtitude;
 
+    private IRetrofit iRetrofit;
+    String userName ="";
 
     // Callbacks for receiving payloads
     private final PayloadCallback payloadCallback =
@@ -164,9 +188,61 @@ public class BlankFragment extends Fragment {
             new ConnectionLifecycleCallback() {
                 @Override
                 public void onConnectionInitiated(String endpointId, ConnectionInfo connectionInfo) {
+
                     connectionsClient.acceptConnection(endpointId, payloadCallback);
                     friendName = connectionInfo.getEndpointName();
-                    setFriendNameText(friendName);
+                    //retrofit 생성
+                    iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
+                    Call<Member> call = iRetrofit.getMemberInfo(friendName);
+                    call.enqueue(new Callback<Member>() {
+                        @Override
+                        public void onResponse(Call<Member> call, Response<Member> response) {
+                            Log.d("getUserNo", "Data fetch success");
+
+                            if(response.isSuccessful() && response.body() != null){
+                                //response.body()를 result에 저장
+                                Member result = response.body();
+                                List<Member> memberInfo = result.getMemberInfo();
+                                userName = memberInfo.get(0).getUserName();
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<Member> call, Throwable t) {
+                            Log.d("info::::::", t.toString());
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            builder.setTitle("알림")
+                                    .setMessage("예기치 못한 오류가 발생하였습니다.\n 고객센터에 문의바랍니다.")
+                                    .setPositiveButton("확인", null)
+                                    .create()
+                                    .show();
+                        }
+                    });
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Check")
+                            .setMessage("Do you want to connect with "+userName+"?")
+                            .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Bundle bundle_my = new Bundle(); // 번들을 통해 값 전달
+                                    bundle_my.putString("userName", userName);//번들에 넘길 값 저장
+                                    SuccessFragment successFragment = new SuccessFragment();
+                                    successFragment.setArguments(bundle_my);
+                                    ((ShareActivity)getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.home_ly, successFragment).commit();
+
+                                }
+                            })
+                            .setNegativeButton("no", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    //getActivity().finish();
+                                }
+                            })
+                            .create()
+                            .show();
+
+
+/*                    setFriendNameText(friendName);
                     setStatusText("connected");
                     System.out.println("===========");
                     System.out.println("===========");
@@ -174,7 +250,7 @@ public class BlankFragment extends Fragment {
                     System.out.println(friendName);
                     System.out.println("===========");
                     System.out.println("===========");
-                    System.out.println("===========");
+                    System.out.println("===========");*/
                 }
 
                 @Override
@@ -223,29 +299,46 @@ public class BlankFragment extends Fragment {
 
 
 
+    FunnyLoader funnyLoader;
+    ImageView image_click;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         connectionsClient = Nearby.getConnectionsClient(getContext());
         myView = inflater.inflate(R.layout.fragment_blank, container, false);
 
+        //funnyLoader = (FunnyLoader) myView.findViewById(R.id.textView1);
+        //toggle = (Button) myView.findViewById(R.id.button);
 
-        myNameText = myView.findViewById(R.id.myName);
+        image_click = (ImageView) myView.findViewById(R.id.image_click);
+        Glide.with(this).load(R.drawable.click).into(image_click);
+
+
+        HiveProgressView progressView = (HiveProgressView) myView.findViewById(R.id.hive_progress);
+        progressView.setRainbow(true);
+        //progressView.setColor(0x000000);
+
+
+        final Drawable drawable = ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.ic_heart);
+        final Shape.DrawableShape drawableShape = new Shape.DrawableShape(drawable, true);
+
+
+
+/*        myNameText = myView.findViewById(R.id.myName);
         statusText = myView.findViewById(R.id.status);
-        friendNameText = myView.findViewById(R.id.frinedName);
+        friendNameText = myView.findViewById(R.id.frinedName);*/
 
 
         typeSpinner =myView.findViewById(R.id.first_spinner);
-        disconnectButton= myView.findViewById(R.id.disconnect);
+/*        disconnectButton= myView.findViewById(R.id.disconnect);
         disconnectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 connectionsClient.disconnectFromEndpoint(friendEndpointId);
                 resetAll();
             }
-        });
+        });*/
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -269,12 +362,40 @@ public class BlankFragment extends Fragment {
 
 
 
+        image_click.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                // 통신해야하는 부분
+
+
+                System.out.println("the test is good ");
+
+
+                getLocationInfo();
+
+                if (!hasPermissions(getContext(), REQUIRED_PERMISSIONS)) {
+                    requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_REQUIRED_PERMISSIONS);
+                }
+
+                if (getArguments() != null)
+                {
+                    myName = getArguments().getString("loginId");
+                    myloginId= myName;
+                    setMyNameText(myName);
+                    System.out.println("=========== the name is =============");
+                    System.out.println(myName);
+                    findFriend();
+
+                }
+                // Button Activity
+            }
+        });
 
 
 
 
 
-        shareButton = myView.findViewById(R.id.btn_share);
+/*        shareButton = myView.findViewById(R.id.btn_share);
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -304,7 +425,7 @@ public class BlankFragment extends Fragment {
 
                 // Button Activity
             }
-        });
+        });*/
 
         // Inflate the layout for this fragment
         return myView;

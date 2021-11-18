@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -197,13 +198,25 @@ public class FoldingCellListAdapter extends ArrayAdapter<Card> {
             @Override
             public void onClick(View view) {
 
+                Bundle bundle1 = new Bundle(); // 번들을 통해 값 전달
+                Log.d("여기는 히스토리 뷰 화면 전환 클릭 이벤트 리스너",item.getUserNo().toString());
+                Log.d("번들 시퀀스 확인",item.getSeq().toString());
+                bundle1.putString("userNo",item.getUserNo());//번들에 넘길 값 저장
+                bundle1.putString("seq",item.getSeq());//번들에 넘길 값 저장
+                bundle1.putString("userName",item.getUserName());//번들에 넘길 값 저장
+                bundle1.putString("total",item.getTotal());//번들에 넘길 값 저장
                 HistoryFragment historyFragment = new HistoryFragment();
+                historyFragment.setArguments(bundle1);
+
                 ((ShareActivity)getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.home_ly, historyFragment).commit();
             }
         });
 
+
+
+        Log.d("총만남횟수",item.getTotal());
         /*총 만남 횟수 세팅*/
-        String str = "total 15 times you met";
+        String str = "total "+item.getTotal()+" times you met";
         SpannableStringBuilder ssb = new SpannableStringBuilder(str);
         ssb.setSpan(new ForegroundColorSpan(Color.parseColor("#FF0000")), 6, 8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         viewHolder.totalText.setText(ssb);

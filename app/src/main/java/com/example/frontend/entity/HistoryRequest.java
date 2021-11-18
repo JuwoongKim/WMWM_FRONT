@@ -13,11 +13,20 @@ public class HistoryRequest {
     @SerializedName("aType")
     public String aType;
 
-    @SerializedName("loginId")
+    @SerializedName("latitude")
     public String latitude;
 
-    @SerializedName("loginId")
+    @SerializedName("longitude")
     public String longitude;
+
+    @SerializedName("day")
+    public String day;
+
+    @SerializedName("beforeDay")
+    public String beforeDay;
+
+    @SerializedName("regDt")
+    public String regDt;
 
     public HistoryRequest(String loginId, String subLoginId, String aType, String latitude, String longitude) {
         this.loginId = loginId;
@@ -67,5 +76,27 @@ public class HistoryRequest {
         this.longitude = longitude;
     }
 
+    public String getDay() {
+        return day;
+    }
 
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getBeforeDay() {
+        return beforeDay;
+    }
+
+    public void setBeforeDay(String beforeDay) {
+        this.beforeDay = beforeDay;
+    }
+
+    public String getRegDt() {
+        return regDt;
+    }
+
+    public void setRegDt(String regDt) {
+        this.regDt = regDt;
+    }
 }

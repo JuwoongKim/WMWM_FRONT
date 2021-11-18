@@ -58,6 +58,11 @@ public class Card {
     @SerializedName("fis")
     private InputStream fis;
 
+    @SerializedName("total")
+    private String total;
+
+    @SerializedName("seq")
+    private String seq;
 
 
 
@@ -188,6 +193,22 @@ public class Card {
 
     public void setFis(InputStream fis) {
         this.fis = fis;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
+    public String getSeq() {
+        return seq;
+    }
+
+    public void setSeq(String seq) {
+        this.seq = seq;
     }
     /*end getter, setter*/
 

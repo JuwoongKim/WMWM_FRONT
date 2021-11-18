@@ -34,6 +34,10 @@ public interface IRetrofit {
     Call<HistoryResponse> getHistoryResponse(@Body HistoryRequest historyRequest);
 
     /*Entity: Member*/
+    @GET("/history/detail")    // 히스토리 - 상세 조회 (Param: loginId)
+    Call<HistoryResponse> getHistoryInfoList(@Query("seq") String seq);
+
+    /*Entity: Member*/
     @GET("/member/")    // 회원 - 상세 조회 (Param: loginId)
     Call<Member> getMemberInfo(@Query("loginId") String loginId);
 

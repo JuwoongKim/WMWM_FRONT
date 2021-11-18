@@ -92,7 +92,7 @@ public class ShareActivity extends AppCompatActivity {
         BlankFragment blankFragment = new BlankFragment();
         blankFragment.setArguments(bundle1);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.home_ly, new BlankFragment()).commit(); //FrameLayout에 fragment.xml 띄우기
+        getSupportFragmentManager().beginTransaction().add(R.id.home_ly, blankFragment).commit(); //FrameLayout에 fragment.xml 띄우기
 
         model.getLiveData().observe(this, new Observer<String>(){
 
