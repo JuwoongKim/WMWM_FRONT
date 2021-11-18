@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity{
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Log.d("ddddddddddddddddd",t.toString());
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("알림")
                         .setMessage("예기치 못한 오류가 발생하였습니다.\n 고객센터에 문의바랍니다.")

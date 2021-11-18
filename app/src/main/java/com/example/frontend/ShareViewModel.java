@@ -5,7 +5,7 @@ package com.example.frontend;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ShareViewModel extends ViewModel {
+public class ShareViewModel  extends ViewModel {
 
     private  MutableLiveData<String> liveData=new MutableLiveData<String>();
 

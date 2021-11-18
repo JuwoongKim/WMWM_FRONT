@@ -12,6 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.frontend.entity.Card;
+import com.example.frontend.entity.History;
+import com.example.frontend.retrofit.IRetrofit;
+import com.example.frontend.retrofit.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link BlankFragment4#newInstance} factory method to
@@ -62,23 +71,17 @@ public class BlankFragment4 extends Fragment {
 
 
 
-
-
-    ChildOne childOne; //ChildFragment 참조변수
-
-
     private ShareViewModel sharedViewModel;
     private String userNo;
+    private IRetrofit iRetrofit;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         ViewGroup rootView =(ViewGroup) inflater.inflate(R.layout.fragment_blank4, container, false);
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
-
         sharedViewModel.getLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -88,8 +91,6 @@ public class BlankFragment4 extends Fragment {
                 System.out.println("======================");
             }
         });
-
-
 
         return rootView;
 

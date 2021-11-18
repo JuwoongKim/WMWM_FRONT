@@ -1,14 +1,27 @@
 package com.example.frontend;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.example.frontend.entity.Card;
+import com.example.frontend.entity.Tcount;
+import com.example.frontend.entity.Test;
+import com.example.frontend.retrofit.IRetrofit;
+import com.example.frontend.retrofit.RetrofitClient;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,6 +81,8 @@ public class ChildTwo extends Fragment {
     private ShareViewModel sharedViewModel;
     private String userNo;
 
+    private IRetrofit retrofit;
+    private List<Card> cardList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,8 +102,13 @@ public class ChildTwo extends Fragment {
                 userNo = s;
                 System.out.println(userNo);
                 System.out.println("======================");
+
+
+
             }
         });
+
+
 
         return rootView;
 

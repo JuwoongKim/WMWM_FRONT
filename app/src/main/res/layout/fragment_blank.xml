@@ -12,18 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="200dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="50dp"
         android:orientation="horizontal">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:text="Here, "/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,81 +47,14 @@
     </LinearLayout>
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="380dp"
-        android:layout_height="300dp"
+    <ImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/image_click"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-        android:backgroundTint="@color/white"
-        app:cardCornerRadius="30dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_marginTop="25dp"
-            android:gravity="center"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:textColor="@color/black_overlay"
-            android:text="CHOOSE MEET TYPE"/>
-
-        <Spinner
-            android:id="@+id/first_spinner"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center">
-
-            <ImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/image_click"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center|bottom"
-                android:layout_marginBottom="17dp"
-                android:src="@drawable/click" />
-
-            <LinearLayout
-                android:layout_width="130dp"
-                android:layout_height="35dp"
-                app:cardCornerRadius="10dp"
-                android:layout_gravity="center"
-                android:background="@drawable/outline" >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="23sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="TAB HERE!">
-
-
-                </TextView>
-            </LinearLayout>
-
-
-
-
-
-
-
-        </FrameLayout>
-
-
-
-
-    </androidx.cardview.widget.CardView>
+        android:layout_marginTop="50dp"
+        android:src="@drawable/tab2" />
 
 
 

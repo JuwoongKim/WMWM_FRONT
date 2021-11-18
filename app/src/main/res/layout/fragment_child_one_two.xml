@@ -9,6 +9,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="시간대별 만남횟수" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/one_two_bar_chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>

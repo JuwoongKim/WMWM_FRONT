@@ -1,14 +1,28 @@
 package com.example.frontend;
 
+import android.location.Location;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.example.frontend.entity.Card;
+import com.example.frontend.entity.Hcount;
+import com.example.frontend.retrofit.IRetrofit;
+import com.example.frontend.retrofit.RetrofitClient;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,16 +74,11 @@ public class ChildOneThree extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
     private ShareViewModel sharedViewModel;
     private String userNo;
+    private IRetrofit iRetrofit;
+    private List<Card> cardList;
+    private String mbtiCount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,7 +90,6 @@ public class ChildOneThree extends Fragment {
 
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
-
         sharedViewModel.getLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -89,8 +97,46 @@ public class ChildOneThree extends Fragment {
                 userNo = s;
                 System.out.println(userNo);
                 System.out.println("======================");
+
+                iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
+                Call<Card> call = iRetrofit.selectMbti(userNo);
+                call.enqueue(new Callback<Card>() {
+                    @Override
+                    public void onResponse(Call<Card> call, Response<Card> response) {
+
+                        if(response.isSuccessful()&& response.body()!=null){
+
+                            cardList = response.body().getCardInfo();
+
+                            for( Card card : cardList)
+                            {
+                                System.out.println(card.getMbti());
+                            }
+
+                            mbtiCount = Integer.toString(cardList.size());
+
+                            System.out.println("당신과 같은  MBTI 수는 ");
+                            System.out.println(mbtiCount);
+                            System.out.println("=========");
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Card> call, Throwable t) {
+
+
+                    }
+                });
+
+
+
+
             }
         });
+
+
+
 
         return rootView;
 

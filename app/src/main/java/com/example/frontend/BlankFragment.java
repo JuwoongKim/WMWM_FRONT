@@ -1,23 +1,13 @@
 package com.example.frontend;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-
-import androidx.annotation.CallSuper;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +19,12 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.CallSuper;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.comix.overwatch.HiveProgressView;
@@ -47,18 +43,13 @@ import com.google.android.gms.nearby.connection.EndpointDiscoveryCallback;
 import com.google.android.gms.nearby.connection.Payload;
 import com.google.android.gms.nearby.connection.PayloadCallback;
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate;
-import com.google.android.gms.nearby.connection.Strategy;
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate.Status;
-
-import org.w3c.dom.Text;
+import com.google.android.gms.nearby.connection.Strategy;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import io.supercharge.funnyloader.FunnyLoader;
-import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
-import nl.dionsegijn.konfetti.models.Size;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -312,7 +303,7 @@ public class BlankFragment extends Fragment {
         //toggle = (Button) myView.findViewById(R.id.button);
 
         image_click = (ImageView) myView.findViewById(R.id.image_click);
-        Glide.with(this).load(R.drawable.click).into(image_click);
+        Glide.with(this).load(R.drawable.tab2).into(image_click);
 
 
         HiveProgressView progressView = (HiveProgressView) myView.findViewById(R.id.hive_progress);
@@ -330,7 +321,7 @@ public class BlankFragment extends Fragment {
         friendNameText = myView.findViewById(R.id.frinedName);*/
 
 
-        typeSpinner =myView.findViewById(R.id.first_spinner);
+        //typeSpinner =myView.findViewById(R.id.first_spinner);
 /*        disconnectButton= myView.findViewById(R.id.disconnect);
         disconnectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -341,7 +332,7 @@ public class BlankFragment extends Fragment {
         });*/
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+/*        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 getContext(), android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter);
@@ -358,7 +349,7 @@ public class BlankFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
+        });*/
 
 
 
@@ -381,7 +372,7 @@ public class BlankFragment extends Fragment {
                 {
                     myName = getArguments().getString("loginId");
                     myloginId= myName;
-                    setMyNameText(myName);
+                    //setMyNameText(myName);
                     System.out.println("=========== the name is =============");
                     System.out.println(myName);
                     findFriend();
@@ -469,7 +460,7 @@ public class BlankFragment extends Fragment {
     public void findFriend() {
         startAdvertising();
         startDiscovery();
-        setStatusText("Searching");
+        //setStatusText("Searching");
     }
 
     private void startDiscovery() {
@@ -490,13 +481,13 @@ public class BlankFragment extends Fragment {
     }
 
     public void setMyNameText(String myName){
-        myNameText.setText(myName);
+//        myNameText.setText(myName);
     }
 
 
     public  void setStatusText(String status)
     {
-        statusText.setText(status);
+//        statusText.setText(status);
     }
 
     public  void setFriendNameText(String friendName){
@@ -552,23 +543,4 @@ public class BlankFragment extends Fragment {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

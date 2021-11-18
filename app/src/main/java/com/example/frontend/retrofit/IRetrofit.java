@@ -1,11 +1,15 @@
 package com.example.frontend.retrofit;
 
 import com.example.frontend.entity.Card;
+import com.example.frontend.entity.Hcount;
+import com.example.frontend.entity.History;
 import com.example.frontend.entity.HistoryRequest;
 import com.example.frontend.entity.HistoryResponse;
 import com.example.frontend.entity.LoginRequest;
 import com.example.frontend.entity.LoginResponse;
 import com.example.frontend.entity.Member;
+import com.example.frontend.entity.Tcount;
+import com.example.frontend.entity.Wcount;
 
 import java.util.HashMap;
 
@@ -31,11 +35,11 @@ public interface IRetrofit {
 
     /*Entity: History*/
     @POST("/history/")    // 로그인 (Param: loginRequest)
-    Call<HistoryResponse> getHistoryResponse(@Body HistoryRequest historyRequest);
+    Call<HistoryResponse> insertHistoryInfo(@Body HistoryRequest historyRequest);
 
-    /*Entity: Member*/
     @GET("/history/detail")    // 히스토리 - 상세 조회 (Param: loginId)
     Call<HistoryResponse> getHistoryInfoList(@Query("seq") String seq);
+
 
     /*Entity: Member*/
     @GET("/member/")    // 회원 - 상세 조회 (Param: loginId)
@@ -59,6 +63,33 @@ public interface IRetrofit {
     @GET("/card/fileDownload/")
     @Streaming
     Call<ResponseBody> fileDownload(@Query("fileId") String fileId);
+
+
+    // 주웅이 새로 추가한것
+
+    @GET("/history/location")      // 지인 정보 - 목록 조회 (Param: userNo)
+    Call<History> selectHistoryList(@Query("userNo") String userNo);
+
+    @GET("/history/tcount")
+    Call<Tcount> selectTypeCount(@Query("userNo") String userNo);
+
+    @GET("/history/hcount")
+    Call<Hcount> selectHourCount(@Query("userNo") String userNo);
+
+    @GET("/history/wcount")
+    Call<Wcount> selectWeekCount(@Query("userNo") String userNo);
+
+    @GET("/card/mbti")
+    Call<Card> selectMbti(@Query("userNo") String userNo);
+
+    //@GET("/history/best")
+    //Call<Card> selectBestFriends(@Query("userNo") String userNo);
+
+
+
+
+    //@GET("/history/test")
+    //Call<Test>  firstTest(@Query("para") String param);
 
 
 

@@ -13,7 +13,7 @@ public class ChildOnePagerAdapter extends FragmentStateAdapter {
 
     private final List<Fragment> FragmentList = new ArrayList<>();
 
-    public ChildOnePagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+    public ChildOnePagerAdapter (@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
 

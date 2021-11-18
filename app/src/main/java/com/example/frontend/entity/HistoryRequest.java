@@ -2,7 +2,12 @@ package com.example.frontend.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class HistoryRequest {
+
+    @SerializedName("seq")
+    public int seq;
 
     @SerializedName("loginId")
     public String loginId;
@@ -10,14 +15,17 @@ public class HistoryRequest {
     @SerializedName("subLoginId")
     public String subLoginId;
 
-    @SerializedName("aType")
-    public String aType;
+    @SerializedName("type")
+    public String type;
 
     @SerializedName("latitude")
     public String latitude;
 
     @SerializedName("longitude")
     public String longitude;
+
+    @SerializedName("historyList")
+    public List<HistoryRequest> historyList;
 
     @SerializedName("day")
     public String day;
@@ -31,9 +39,33 @@ public class HistoryRequest {
     public HistoryRequest(String loginId, String subLoginId, String aType, String latitude, String longitude) {
         this.loginId = loginId;
         this.subLoginId = subLoginId;
-        this.aType = aType;
+        this.type = aType;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public List<HistoryRequest> getHistoryList() {
+        return historyList;
+    }
+
+    public void setHistoryList(List<HistoryRequest> historyList) {
+        this.historyList = historyList;
+    }
+
+    public int getSeq() {
+        return seq;
+    }
+
+    public void setSeq(int seq) {
+        this.seq = seq;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getLoginId() {
@@ -50,14 +82,6 @@ public class HistoryRequest {
 
     public void setSubLoginId(String subLoginId) {
         this.subLoginId = subLoginId;
-    }
-
-    public String getaType() {
-        return aType;
-    }
-
-    public void setaType(String aType) {
-        this.aType = aType;
     }
 
     public String getLatitude() {

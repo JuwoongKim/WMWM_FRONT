@@ -9,6 +9,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="주단위 만남 추세" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/one_one_linechart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

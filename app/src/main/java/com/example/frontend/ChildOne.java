@@ -1,15 +1,17 @@
 package com.example.frontend;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -70,13 +72,12 @@ public class ChildOne extends Fragment {
     private ChildOneOne childOneOne_fragment;
     private ChildOneTwo childOneTwo_fragment;
     private ChildOneThree childOneThree_fragment;
-    private ChildOneFour childOneFour_fragment;
 
     private ViewPager2 viewPager;
     private ChildOnePagerAdapter pagerAdapter;
     private TabLayout child_ond_tabs;
 
-    private String[] titles = new String[]{"최근추세", "선호시간", "MBTI", "활동타입"};
+    private String[] titles = new String[]{"최근추세", "선호시간", "MBTI"};
 
 
 
@@ -106,7 +107,6 @@ public class ChildOne extends Fragment {
         childOneOne_fragment=  new ChildOneOne();
         childOneTwo_fragment= new ChildOneTwo();
         childOneThree_fragment= new ChildOneThree();
-        childOneFour_fragment= new ChildOneFour();
 
 
         viewPager = (ViewPager2)rootView.findViewById(R.id.child_one_container);
@@ -115,7 +115,6 @@ public class ChildOne extends Fragment {
         pagerAdapter.addFragment(childOneOne_fragment);
         pagerAdapter.addFragment(childOneTwo_fragment);
         pagerAdapter.addFragment(childOneThree_fragment);
-        pagerAdapter.addFragment(childOneFour_fragment);
         viewPager.setAdapter(pagerAdapter);
         //viewPager.setUserInputEnabled(false);
 

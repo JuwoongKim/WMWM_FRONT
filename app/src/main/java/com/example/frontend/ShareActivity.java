@@ -49,16 +49,17 @@ public class ShareActivity extends AppCompatActivity {
 
         bottom_navigation = findViewById(R.id.bottom_navigation);
 
+
+        //////////////////////////////////////////////
         getLocationPermisson();
-        model = new ViewModelProvider(this).get(ShareViewModel.class);
-        System.out.println("niceeeeeee");
-        model.setLiveData("helloworld");
-        System.out.println("gooooood");
+        /////////////////////////////////////////////
 
 
         Intent intent = getIntent(); /*데이터 수신*/
         Log.d("In ShareActivity[loginId]:", intent.getExtras().getString("loginId"));
         String loginId = intent.getExtras().getString("loginId");
+
+        model = new ViewModelProvider(this).get(ShareViewModel.class);
 
         //retrofit 생성
         iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
@@ -73,6 +74,9 @@ public class ShareActivity extends AppCompatActivity {
                     Member result = response.body();
                     List<Member> memberInfo = result.getMemberInfo();
                     userNoSub = memberInfo.get(0).getUserNo();
+                    System.out.println("niceeeeeee");
+                    model.setLiveData(userNoSub);                                       //// 이거 자세히 봐볼 것
+                    System.out.println("gooooood");
                 }
             }
             @Override
@@ -136,12 +140,16 @@ public class ShareActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.home_ly, blankFragment3).commit();
                         break;
 
-                    case R.id.page_statistics:
+                    case R.id.static_service:
                         Bundle bundle_static = new Bundle(); // 번들을 통해 값 전달
                         bundle_static.putString("userNo", userNoSub);//번들에 넘길 값 저장
                         BlankFragment4 blankFragment4 = new BlankFragment4();
                         blankFragment4.setArguments(bundle_static);
+
+
+
                         getSupportFragmentManager().beginTransaction().replace(R.id.home_ly, blankFragment4).commit();
+
                         break;
                 }
 
