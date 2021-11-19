@@ -24,11 +24,11 @@
                 android:id="@+id/child_one"
                 />
 
-            <View
+            <ImageView
                 android:id="@+id/divider1"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+                android:layout_height="5dp"
+                android:src="@color/bgTitleRight" />
 
 
             <fragment
@@ -39,11 +39,11 @@
                 android:id="@+id/child_two"
                 />
 
-            <View
+            <ImageView
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+                android:layout_height="5dp"
+                android:src="@color/bgTitleRight" />
 
             <fragment
                 android:layout_width="match_parent"
@@ -52,11 +52,11 @@
                 android:id="@+id/child_three"
                 />
 
-            <View
+            <ImageView
                 android:id="@+id/divider3"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+                android:layout_height="5dp"
+                android:src="@color/contentDividerLine" />
 
         </LinearLayout>
     </ScrollView>

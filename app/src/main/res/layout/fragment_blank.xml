@@ -8,89 +8,110 @@
     tools:context=".BlankFragment">
 
 
+
     <LinearLayout
+        android:id="@+id/main_text"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="50dp"
-        android:orientation="horizontal">
+        android:layout_height="150dp"
+        android:layout_marginTop="150dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:text="Connect  "/>
-
-        <com.comix.overwatch.HiveProgressView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/hive_progress"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:hive_animDuration="5000"
-            app:hive_maxAlpha="255"
-            app:hive_rainbow="true"
-            app:hive_cornerRadius="20"
-            app:hive_shrink="true"
-            />
-
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:text="  with friends!"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/connect_text"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="TO CONNECT"
+                android:textColor="@color/btnRequest"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/hive_progress_layout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/connect_text"
+                android:layout_marginBottom="30dp"
+                android:gravity="center">
+
+                <com.comix.overwatch.HiveProgressView
+                    android:id="@+id/hive_progress"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    app:hive_animDuration="5000"
+                    app:hive_cornerRadius="20"
+                    app:hive_maxAlpha="255"
+                    app:hive_rainbow="true"
+                    app:hive_shrink="true" />
+            </LinearLayout>
+
+
+<!--            <TextView
+                android:id="@+id/friend_text"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/hive_progress_layout"
+                android:gravity="center"
+                android:text="CLICK THE BUTTON! "
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />-->
+
+
+        </RelativeLayout>
+
+
+
     </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/button_back"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:background="@color/white">
+
+
+
+
+
+        <ImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/image_click"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/blacksquare"/>
+
+
+    </FrameLayout>
 
 
     <ImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/image_click"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/tab2" />
-
-
-
-<!--
-    <LinearLayout
+        android:id="@+id/clickfin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="150dp"
+        android:layout_marginTop="420dp"
+        android:src="@drawable/clickfin"/>
 
-        <TextView
-            android:id="@+id/myName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="myName" />
+    <TextView
+        android:id="@+id/click_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="330dp"
+        android:gravity="center"
+        android:layout_below="@+id/hive_progress_layout"
+        android:text="CLICK THE BUTTON ! "
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="status" />
-
-        <TextView
-            android:id="@+id/frinedName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="friendName" />
-
-        <Button
-            android:id="@+id/disconnect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="disconnect" />
-
-
-    </LinearLayout>
--->
 
 
 

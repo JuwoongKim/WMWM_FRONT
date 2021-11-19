@@ -20,10 +20,18 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.example.frontend.entity.Card;
+import com.example.frontend.entity.History;
 import com.example.frontend.entity.HistoryRequest;
 import com.example.frontend.entity.HistoryResponse;
 import com.example.frontend.retrofit.IRetrofit;
 import com.example.frontend.retrofit.RetrofitClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
@@ -89,12 +97,21 @@ public class HistoryFragment extends Fragment {
     private TextView totalText;
     private TextView titleSubName;
 
+    // new add by juwoong
+    private SupportMapFragment mapFragment;
+    private GoogleMap map;
+    private List<History> historyList;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_history, container, false);
+
+        // 지도 받음
+        mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.hmap);
+
 
         theListView = rootView.findViewById(R.id.historyListView);
         list = new ArrayList<HistoryRequest>();
@@ -179,6 +196,70 @@ public class HistoryFragment extends Fragment {
                             .setPositiveButton("확인", null)
                             .create()
                             .show();
+
+                }
+            });
+
+            //       iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
+            //       Call<HistoryResponse> call = iRetrofit.getHistoryInfoList(seq);
+
+            Call<History> call2 = iRetrofit.selectHistoryList(userNo);
+            call2.enqueue(new Callback<History>() {
+                @Override
+                public void onResponse(Call<History> call, Response<History> response) {
+
+
+                    if(response.isSuccessful()&& response.body()!=null) {
+                        historyList = response.body().getHistoryList();
+
+                        //for (History history : historyList) {
+                        //    System.out.println("========");
+                        //     System.out.println(history.getLatitude());
+                        //    System.out.println(history.getLongitude());
+                        //}
+
+
+                        mapFragment.getMapAsync(new OnMapReadyCallback() {
+                            @Override
+                            public void onMapReady(@NonNull GoogleMap googleMap) {
+                                map = googleMap;
+
+                                for( History history : historyList)
+                                {
+                                    //    System.out.println(history.getLatitude());
+                                    //    System.out.println(history.getLongitude());
+                                    //    System.out.println(history.getType());
+                                    //    System.out.println(history.getRegdt());
+                                    MarkerOptions makerOptions = new MarkerOptions();
+                                    makerOptions
+                                            .position(new LatLng(Double.parseDouble(history.getLatitude()),Double.parseDouble(history.getLongitude())))
+                                            .title("활동 내용 타입 : " +history.getType())
+                                            .snippet("만난 일자  : " +history.getRegdt());
+                                    map.addMarker(makerOptions);
+                                }
+
+                                map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                                    @Override
+                                    public boolean onMarkerClick(@NonNull Marker marker) {
+
+                                        return false;
+                                    }
+                                });
+
+                                map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.52487, 126.92723),10));
+
+
+
+
+
+
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<History> call, Throwable t) {
 
                 }
             });

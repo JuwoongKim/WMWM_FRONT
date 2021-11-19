@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChildTwo">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="20dp"
+        android:layout_margin="15dp">
+
+        <TextView
+            android:id="@+id/rank_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="기간별 만남 순위"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/rank_title"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="*현재 시간 기준"
+            android:textStyle="bold"
+            android:textSize="11sp"
+            android:textColor="@color/black_overlay"/>
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/child_two_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:elevation="1dp"
+        android:background="@android:color/background_light"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        app:tabTextColor="@color/black"
+        app:tabSelectedTextColor="#00796B" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/child_two_container"
+        android:layout_below="@id/child_two_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
 
 </FrameLayout>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#78000000"
+    android:background="@drawable/editback"
     android:visibility="visible"
     android:orientation="vertical">
 
@@ -231,7 +231,7 @@
         <!-- addresses part -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="60dp"
             android:layout_marginBottom="-5dp"
             android:baselineAligned="false"
             android:orientation="horizontal">
@@ -312,7 +312,7 @@
         <!-- dates part -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="60dp"
             android:baselineAligned="false"
             android:orientation="horizontal"
             android:layout_marginBottom="-5dp">
@@ -385,12 +385,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="30dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="#F42A2A"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:textSize="17sp"
                 android:gravity="center"
                 android:text="After editing, click the save button.">

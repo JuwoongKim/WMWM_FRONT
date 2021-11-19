@@ -261,7 +261,7 @@
             android:id="@+id/content_history_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:background="@color/btnRequest"
             android:padding="7dp"
             android:text="@string/history_btn_text"
@@ -277,7 +277,7 @@
             android:layout_marginTop="4dp"
             android:textAlignment="center"
             android:textColor="@color/contentBadgeTitle"
-            android:textSize="11sp" />
+            android:textSize="13sp" />
 
     </LinearLayout>
 

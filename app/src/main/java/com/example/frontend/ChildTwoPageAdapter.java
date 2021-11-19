@@ -9,11 +9,10 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChildOnePagerAdapter extends FragmentStateAdapter {
+public class ChildTwoPageAdapter extends FragmentStateAdapter {
+    private final List<Fragment> FragmentList = new ArrayList<Fragment>();
 
-    private final List<Fragment> FragmentList = new ArrayList<>();
-
-    public ChildOnePagerAdapter (@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+    public ChildTwoPageAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
 

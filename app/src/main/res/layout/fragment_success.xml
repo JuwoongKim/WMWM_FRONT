@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="200dp"
-        android:layout_marginLeft="45dp"
+        android:layout_marginLeft="25dp"
         android:orientation="horizontal">
 
 
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/btnRequest"
             android:layout_gravity="center"
             android:text="Connection  "/>
 

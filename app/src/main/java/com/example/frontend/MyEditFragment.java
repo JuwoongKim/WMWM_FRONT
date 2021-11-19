@@ -212,8 +212,8 @@ public class MyEditFragment extends Fragment {
         image1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                file_flag = 1;
                 selectGallery();
+                file_flag = 1;
             }
         });
 

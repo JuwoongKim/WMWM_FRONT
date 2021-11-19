@@ -11,6 +11,9 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.TextView;
 
 import com.example.frontend.entity.Card;
 import com.example.frontend.entity.Hcount;
@@ -80,6 +83,11 @@ public class ChildOneThree extends Fragment {
     private List<Card> cardList;
     private String mbtiCount;
 
+    // new add by juwoong
+    private TextView mbtiName;
+    private TextView mbtiName2;
+    private AlphaAnimation anim;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -87,6 +95,14 @@ public class ChildOneThree extends Fragment {
 
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_child_one_three,container,false);
+
+        mbtiName = rootView.findViewById(R.id.onethree2);
+        mbtiName2 = rootView.findViewById(R.id.onethree5);
+
+        anim = new AlphaAnimation(0.0f,1.0f);
+        anim.setDuration(100); anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
 
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
@@ -119,6 +135,10 @@ public class ChildOneThree extends Fragment {
                             System.out.println(mbtiCount);
                             System.out.println("=========");
 
+                            mbtiName.setText(cardList.get(0).getMbti());
+                            mbtiName2.setText(mbtiCount);
+                            mbtiName.setAnimation(anim);
+                            mbtiName2.setAnimation(anim);
                         }
                     }
 

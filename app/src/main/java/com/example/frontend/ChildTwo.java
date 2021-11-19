@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import com.example.frontend.entity.Tcount;
 import com.example.frontend.entity.Test;
 import com.example.frontend.retrofit.IRetrofit;
 import com.example.frontend.retrofit.RetrofitClient;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.List;
 
@@ -84,6 +87,21 @@ public class ChildTwo extends Fragment {
     private IRetrofit retrofit;
     private List<Card> cardList;
 
+    // add new by juwoong
+    private ChildTwoOne childTwoOne_fragment;
+    private ChildTwoTwo childTwoTwo_fragment;
+    private ChildTwoThree childTwoThree_fragment;
+    private ChildTwoFour childTwoFour_fragment;
+    private ChildTwoFive childTwoFive_fragment;
+
+
+    private ViewPager2 viewPager;
+    private ChildTwoPageAdapter pagerAdapter;
+    private TabLayout child_two_tabs;
+
+    private String[] titles = new String[]{"1개월", "3개월", "6개월", "1년", "전체"};
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -91,6 +109,29 @@ public class ChildTwo extends Fragment {
 
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_child_two,container,false);
+
+        childTwoOne_fragment=  new ChildTwoOne();
+        childTwoTwo_fragment= new ChildTwoTwo();
+        childTwoThree_fragment=  new ChildTwoThree();
+        childTwoFour_fragment= new ChildTwoFour();
+        childTwoFive_fragment=  new ChildTwoFive();
+
+        viewPager =rootView.findViewById(R.id.child_two_container);
+        pagerAdapter = new ChildTwoPageAdapter(getChildFragmentManager(),getLifecycle());
+
+        pagerAdapter.addFragment(childTwoOne_fragment);
+        pagerAdapter.addFragment(childTwoTwo_fragment);
+        pagerAdapter.addFragment(childTwoThree_fragment);
+        pagerAdapter.addFragment(childTwoFour_fragment);
+        pagerAdapter.addFragment(childTwoFive_fragment);
+
+
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setCurrentItem(0);
+
+        child_two_tabs = rootView.findViewById(R.id.child_two_tabs);
+
+        new TabLayoutMediator(child_two_tabs,viewPager,(tab, position) -> tab.setText(titles[position])).attach();
 
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);

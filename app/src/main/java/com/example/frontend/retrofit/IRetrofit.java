@@ -8,6 +8,7 @@ import com.example.frontend.entity.HistoryResponse;
 import com.example.frontend.entity.LoginRequest;
 import com.example.frontend.entity.LoginResponse;
 import com.example.frontend.entity.Member;
+import com.example.frontend.entity.Rank;
 import com.example.frontend.entity.Tcount;
 import com.example.frontend.entity.Wcount;
 
@@ -90,6 +91,10 @@ public interface IRetrofit {
 
     //@GET("/history/test")
     //Call<Test>  firstTest(@Query("para") String param);
+
+
+    @GET("/history/rank")      // 히스토리 - 기간별 만남 순위
+    Call<Rank> getPeriodRankList(@Query("userNo") String userNo, @Query("period") String period);
 
 
 

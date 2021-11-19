@@ -4,10 +4,14 @@ import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -45,6 +50,8 @@ import com.google.android.gms.nearby.connection.PayloadCallback;
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate;
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate.Status;
 import com.google.android.gms.nearby.connection.Strategy;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -185,10 +192,11 @@ public class BlankFragment extends Fragment {
                     //retrofit 생성
                     iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
                     Call<Member> call = iRetrofit.getMemberInfo(friendName);
+                    Log.d("onConnectionInitiatedfriendName", friendName);
                     call.enqueue(new Callback<Member>() {
                         @Override
                         public void onResponse(Call<Member> call, Response<Member> response) {
-                            Log.d("getUserNo", "Data fetch success");
+                            Log.d("onConnectionInitiated", "Data fetch success");
 
                             if(response.isSuccessful() && response.body() != null){
                                 //response.body()를 result에 저장
@@ -232,16 +240,6 @@ public class BlankFragment extends Fragment {
                             .create()
                             .show();
 
-
-/*                    setFriendNameText(friendName);
-                    setStatusText("connected");
-                    System.out.println("===========");
-                    System.out.println("===========");
-                    System.out.println("===========");
-                    System.out.println(friendName);
-                    System.out.println("===========");
-                    System.out.println("===========");
-                    System.out.println("===========");*/
                 }
 
                 @Override
@@ -290,26 +288,30 @@ public class BlankFragment extends Fragment {
 
 
 
-    FunnyLoader funnyLoader;
     ImageView image_click;
+    TextView connect_text;
+    ImageView clickfin;
+    FrameLayout button_back;
+    TextView click_text;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //ㅇㅈㅇ
         connectionsClient = Nearby.getConnectionsClient(getContext());
         myView = inflater.inflate(R.layout.fragment_blank, container, false);
 
-        //funnyLoader = (FunnyLoader) myView.findViewById(R.id.textView1);
-        //toggle = (Button) myView.findViewById(R.id.button);
-
         image_click = (ImageView) myView.findViewById(R.id.image_click);
-        Glide.with(this).load(R.drawable.tab2).into(image_click);
-
+        Glide.with(this).load(R.drawable.blacksquare).into(image_click);
 
         HiveProgressView progressView = (HiveProgressView) myView.findViewById(R.id.hive_progress);
         progressView.setRainbow(true);
         //progressView.setColor(0x000000);
 
+
+
+        clickfin = (ImageView) myView.findViewById(R.id.clickfin);
+        Glide.with(this).load(R.drawable.clickfin).into(clickfin);
 
         final Drawable drawable = ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.ic_heart);
         final Shape.DrawableShape drawableShape = new Shape.DrawableShape(drawable, true);
@@ -358,6 +360,13 @@ public class BlankFragment extends Fragment {
             public void onClick(View view) {
                 // 통신해야하는 부분
 
+                image_click = (ImageView) myView.findViewById(R.id.image_click);
+                Glide.with(getContext()).load(R.drawable.loading2).into(image_click);
+                button_back = (FrameLayout) myView.findViewById(R.id.button_back);
+                button_back.setBackgroundColor(Color.parseColor("#00000000"));
+                click_text = (TextView) myView.findViewById(R.id.click_text);
+                click_text.setText("");
+                clickfin.setVisibility(View.INVISIBLE);
 
                 System.out.println("the test is good ");
 

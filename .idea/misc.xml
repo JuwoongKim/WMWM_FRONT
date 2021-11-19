@@ -8,9 +8,13 @@
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/background.xml" value="0.17592592592592593" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/corner.xml" value="0.26" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/edge.xml" value="0.24427083333333333" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/editback.xml" value="0.30625" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/fade_blue.xml" value="0.30666666666666664" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_baseline_add_reaction_24.xml" value="0.1675925925925926" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_baseline_arrow_back_ios_new_24.xml" value="0.2994791666666667" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.1675925925925926" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_baseline_bar_chart_24.xml" value="0.1675925925925926" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.28489583333333335" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.1111111111111111" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_baseline_co_present_24.xml" value="0.29791666666666666" />
@@ -21,7 +25,9 @@
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_baseline_save_alt_24.xml" value="0.1111111111111111" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_heart.xml" value="0.31979166666666664" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20677083333333332" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1675925925925926" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/outline.xml" value="0.3425925925925926" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/outline_edit.xml" value="0.30625" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/outline_history.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/search_icon.xml" value="0.28489583333333335" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/drawable/searchh.xml" value="0.28489583333333335" />
@@ -33,17 +39,22 @@
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/cell.xml" value="0.28177083333333336" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/cell_content_layout.xml" value="0.28177083333333336" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/cell_title_layout.xml" value="0.28177083333333336" />
-        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_blank.xml" value="0.33" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_blank.xml" value="0.20384615384615384" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_blank2.xml" value="0.22023809523809523" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_blank3.xml" value="0.33" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_blank4.xml" value="0.25729166666666664" />
-        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_one.xml" value="0.1" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_one.xml" value="0.5" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_one_four.xml" value="0.1" />
-        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_one_one.xml" value="0.1" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_one_one.xml" value="0.33" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_one_three.xml" value="0.1" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_one_two.xml" value="0.1" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_three.xml" value="0.1" />
-        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_two.xml" value="0.1" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_two.xml" value="0.4635416666666667" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_two_five.xml" value="0.2942708333333333" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_two_four.xml" value="0.2942708333333333" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_two_one.xml" value="0.32708333333333334" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_two_three.xml" value="0.2942708333333333" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_child_two_two.xml" value="0.32708333333333334" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_history.xml" value="0.29375" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_my_edit.xml" value="0.3015625" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/fragment_success.xml" value="0.32135416666666666" />
@@ -53,6 +64,7 @@
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/layout/layout_item.xml" value="0.3067708333333333" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2869791666666667" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/menu/toolbar_menu.xml" value="0.309375" />
+        <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1675925925925926" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/xml/file_path.xml" value="0.2421875" />
         <entry key="..\:/Users/400 G6/AndroidStudioProjects/FrontEnd/app/src/main/res/xml/network_security_config.xml" value="0.2552083333333333" />
       </map>

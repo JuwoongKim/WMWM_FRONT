@@ -91,6 +91,56 @@ public class FoldingCellListAdapter extends ArrayAdapter<Card> {
             viewHolder.contentEmailImage = cell.findViewById(R.id.content_email_image);
             viewHolder.contentHistoryBtn = cell.findViewById(R.id.content_history_btn);
 
+            /*set image file*/
+            String fileId = item.getFileId();
+            if(!"".equals(fileId) && fileId != null){
+                iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
+                Call<ResponseBody> call = iRetrofit.fileDownload(fileId);
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        Log.d("file", "Data fetch success");
+
+                        if (response.isSuccessful()) {
+                            new Thread() {
+                                public void run() {
+                                    InputStream inputStream = response.body().byteStream();
+                                    Log.d("inputStream",inputStream.toString());
+                                    BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+                                    Bitmap bitmap = BitmapFactory.decodeStream(bufferedInputStream);
+
+                                    sActivity.runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            viewHolder.image1.setImageBitmap(bitmap);
+                                        }
+                                    });
+
+                                }
+                            }.start();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Log.d("info::::::", t.toString());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(sActivity);
+                        builder.setTitle("알림")
+                                .setMessage("예기치 못한 오류가 발생하였습니다.\n 고객센터에 문의바랍니다.")
+                                .setPositiveButton("확인", null)
+                                .create()
+                                .show();
+                    }
+
+                });
+            }
+
+            Log.d("총만남횟수",item.getTotal());
+            /*총 만남 횟수 세팅*/
+            String str = "total "+item.getTotal()+" times you met";
+            SpannableStringBuilder ssb = new SpannableStringBuilder(str);
+            ssb.setSpan(new ForegroundColorSpan(Color.parseColor("#FF0000")), 6, 8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            viewHolder.totalText.setText(ssb);
 
             cell.setTag(viewHolder);
 
@@ -112,50 +162,6 @@ public class FoldingCellListAdapter extends ArrayAdapter<Card> {
         /*Title View*/
         viewHolder.userName.setText(item.getUserName());
         viewHolder.birthdate.setText(item.getBirthdate());
-
-        /*set image file*/
-        String fileId = item.getFileId();
-        if(!"".equals(fileId) && fileId != null){
-            iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
-            Call<ResponseBody> call = iRetrofit.fileDownload(fileId);
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    Log.d("file", "Data fetch success");
-
-                    if (response.isSuccessful()) {
-                        new Thread() {
-                            public void run() {
-                                InputStream inputStream = response.body().byteStream();
-                                Log.d("inputStream",inputStream.toString());
-                                BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
-                                Bitmap bitmap = BitmapFactory.decodeStream(bufferedInputStream);
-
-                                sActivity.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        viewHolder.image1.setImageBitmap(bitmap);
-                                    }
-                                });
-
-                            }
-                        }.start();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Log.d("info::::::", t.toString());
-                    AlertDialog.Builder builder = new AlertDialog.Builder(sActivity);
-                    builder.setTitle("알림")
-                            .setMessage("예기치 못한 오류가 발생하였습니다.\n 고객센터에 문의바랍니다.")
-                            .setPositiveButton("확인", null)
-                            .create()
-                            .show();
-                }
-
-            });
-        }
 
         /*Content View*/
         viewHolder.telno1.setText(item.getTelno1());
@@ -214,12 +220,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Card> {
 
 
 
-        Log.d("총만남횟수",item.getTotal());
-        /*총 만남 횟수 세팅*/
-        String str = "total "+item.getTotal()+" times you met";
-        SpannableStringBuilder ssb = new SpannableStringBuilder(str);
-        ssb.setSpan(new ForegroundColorSpan(Color.parseColor("#FF0000")), 6, 8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        viewHolder.totalText.setText(ssb);
+
 
         return cell;
     }

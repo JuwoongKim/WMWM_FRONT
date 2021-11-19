@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -20,6 +20,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:gravity="center"
+                android:textSize="11sp"
                 android:text="Sat" />
 
             <TextView
@@ -31,24 +32,22 @@
                 android:gravity="center"
                 android:text="2021.11.18  17:55"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/tv_before"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="80dp"
                 android:layout_marginRight="10dp"
                 android:layout_toRightOf="@+id/tv_date"
                 android:gravity="center|right"
                 android:text="3일 전"
                 android:textColor="#303F9F"
-                android:textSize="15sp" />
-
-
+                android:textSize="12sp" />
 
 
         </RelativeLayout>
+
     </LinearLayout>
 
 </LinearLayout>

@@ -79,9 +79,6 @@ public class ChildOne extends Fragment {
 
     private String[] titles = new String[]{"최근추세", "선호시간", "MBTI"};
 
-
-
-
     private ShareViewModel sharedViewModel;
     private String userNo;
 
