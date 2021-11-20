@@ -238,6 +238,11 @@ public class BlankFragment extends Fragment {
                             .show();
                      */
 
+<<<<<<< HEAD
+=======
+                     */
+
+>>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
                 };
 
                 @Override
@@ -320,6 +325,7 @@ public class BlankFragment extends Fragment {
                             @Override
                             public void onResponse(Call<HistoryResponse> call, Response<HistoryResponse> response) {
 
+<<<<<<< HEAD
                                 if(response.isSuccessful()&&response.body()!=null)
                                 {
                                     HistoryResponse result = response.body();
@@ -336,6 +342,24 @@ public class BlankFragment extends Fragment {
                                     }
 
                                 }
+=======
+                                    if(response.isSuccessful()&&response.body()!=null)
+                                    {
+                                        HistoryResponse result = response.body();
+
+                                        //받은 코드 저장
+                                        String resultCode = result.getResultCode();
+
+                                        String success = "200";
+                                        String errorId = "300";
+
+                                        if(resultCode.equals(success)) {
+
+                                            System.out.println("scuceessssssss");
+                                        }
+
+                                    }
+>>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
                             }
 
                             @Override
@@ -384,6 +408,7 @@ public class BlankFragment extends Fragment {
                     System.out.println();
 
                     connectionsClient.requestConnection(myloginId, endpointId, connectionLifecycleCallback)
+<<<<<<< HEAD
                             .addOnSuccessListener(
                                     (Void unused)->{
                                         System.out.println("========");
@@ -408,6 +433,32 @@ public class BlankFragment extends Fragment {
                                     }
 
                             );
+=======
+                    .addOnSuccessListener(
+                            (Void unused)->{
+                                System.out.println("========");
+                                System.out.println(myloginId);
+                                System.out.println("========");
+                                System.out.println("========");
+                            }
+                    )
+                    .addOnFailureListener(
+                     (Exception e)->{
+                         System.out.println("");
+                         System.out.println(myloginId);
+                         System.out.println("fail request conection");
+                         System.out.println(e);
+                         System.out.println("");
+                         System.out.println("end explain");
+                         System.out.println("");
+                         connectionsClient.stopDiscovery();
+                         connectionsClient.stopAdvertising();
+                         findFriend();
+
+                     }
+
+                    );
+>>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
 
                 }
 
@@ -469,7 +520,11 @@ public class BlankFragment extends Fragment {
                 getLocationInfo();
 
                 if (!hasPermissions(getContext(), REQUIRED_PERMISSIONS)) {
+<<<<<<< HEAD
                     ;
+=======
+         ;
+>>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
                     // no problemmmm
                     requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_REQUIRED_PERMISSIONS);
                 }
@@ -534,6 +589,7 @@ public class BlankFragment extends Fragment {
                 endpointDiscoveryCallback,
                 new DiscoveryOptions.Builder().setStrategy(STRATEGY).build())
                 .addOnSuccessListener((Void unused)->
+<<<<<<< HEAD
                         {
                             System.out.println("");
                             System.out.println(myloginId);
@@ -546,6 +602,20 @@ public class BlankFragment extends Fragment {
                     System.out.println(myloginId);
                     System.out.println("is fail discovery");
                     System.out.println("============================");
+=======
+                {
+                    System.out.println("");
+                    System.out.println(myloginId);
+                    System.out.println("is startingdiscovery");
+                    System.out.println("============================");}
+                        )
+                .addOnFailureListener((Exception e)->{
+
+                        System.out.println("");
+                        System.out.println(myloginId);
+                        System.out.println("is fail discovery");
+                        System.out.println("============================");
+>>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
                     System.out.println(e);
                 });
 
@@ -564,10 +634,17 @@ public class BlankFragment extends Fragment {
                     System.out.println("is startingadvertising");
                     System.out.println("============================");;
                 }).addOnFailureListener((Exception e)->
+<<<<<<< HEAD
                 {  System.out.println("disdis");
                     System.out.println(e);}
 
         );
+=======
+                 {  System.out.println("disdis");
+                     System.out.println(e);}
+
+                );
+>>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
     }
 
 
