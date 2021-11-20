@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/backgra"
     tools:context=".HistoryFragment">
 
     <ScrollView
@@ -42,7 +42,7 @@
                     android:layout_marginLeft="3dp"
                     android:layout_marginRight="7dp"
                     android:layout_marginBottom="5dp"
-                    android:text="With"
+                    android:text="History with"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:textSize="22sp" />
@@ -147,6 +147,7 @@
                         android:id="@+id/hmap"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="1dp"
                         android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
 

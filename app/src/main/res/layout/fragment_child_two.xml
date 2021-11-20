@@ -4,11 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChildTwo">
+    tools:context=".ChildTwo"
+    android:background="@color/white">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_margin="15dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
 
         <TextView
             android:id="@+id/rank_title"
@@ -16,9 +20,9 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="기간별 만남 순위"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,22 +42,24 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/child_two_tabs"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:elevation="1dp"
-        android:background="@android:color/background_light"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_height="35dp"
+        android:background="@android:color/white"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         app:tabMode="fixed"
         app:tabGravity="fill"
-        app:tabTextColor="@color/black"
-        app:tabSelectedTextColor="#00796B" />
+        app:tabTextColor="@color/black_overlay"
+        app:tabSelectedTextColor="@color/black"
+        app:tabIndicatorColor="@color/black_overlay"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/child_two_container"
         android:layout_below="@id/child_two_tabs"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+
 
 
 

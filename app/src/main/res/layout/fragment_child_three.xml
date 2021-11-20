@@ -3,13 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChildThree">
+    tools:context=".ChildThree"
+    android:background="@color/white">
 
+    <TextView
+        android:id="@+id/rank_title"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:gravity="left"
+        android:layout_margin="15dp"
+        android:text="만남 장소"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
     <!-- TODO: Update blank fragment layout -->
     <fragment
         android:id="@+id/gmap"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="45dp"
         android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
 </FrameLayout>

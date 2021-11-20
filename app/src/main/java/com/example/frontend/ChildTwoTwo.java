@@ -1,15 +1,27 @@
 package com.example.frontend;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.frontend.entity.Rank;
 import com.example.frontend.retrofit.IRetrofit;
+import com.example.frontend.retrofit.RetrofitClient;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,9 +74,15 @@ public class ChildTwoTwo extends Fragment {
 
 
     private ShareViewModel sharedViewModel;
-    private String userNo;
-
     private IRetrofit iRetrofit;
+
+    private String userNo;
+    private String period;
+    private List<Rank> rankList;
+    private ArrayList<Rank> items = new ArrayList<>();
+    private Context context;
+    private ChildTwoAdapter adapter;
+    private ListView theListView;
 
 
     @Override
@@ -75,10 +93,43 @@ public class ChildTwoTwo extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_child_two_two,container,false);
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
-
         sharedViewModel.getLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
+                userNo = s;
+                period = "3";   //1months before
+                rankList = new ArrayList<Rank>();
+
+                iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
+                Call<Rank> call = iRetrofit.getPeriodRankList(userNo, period);
+                call.enqueue(new Callback<Rank>() {
+                    @Override
+                    public void onResponse(Call<Rank> call, Response<Rank> response) {
+                        Log.d("Child 1 months retrofit in","!!!!!!");
+                        if( response.isSuccessful() && response.body()!=null)
+                        {
+                            List<Rank> periodRankList = response.body().getPeriodRankList();
+
+                            if(periodRankList != null && periodRankList.size() != 0){
+                                for(Rank rankInfo : periodRankList){
+                                    Log.d("rank", rankInfo.toString());
+                                    rankList.add(rankInfo);
+                                }
+                                items.addAll(rankList);
+                            }
+                            //context = container.getContext();
+
+                            adapter = new ChildTwoAdapter(getContext(), items, (ShareActivity) getActivity());
+
+                            theListView = rootView.findViewById(R.id.rankListView);
+                            theListView.setAdapter(adapter);
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<Rank> call, Throwable t) {
+                        Log.d("ChildTwoOne", t.toString());
+                    }
+                });
 
 
 

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:paddingVertical="10dp"
         android:layout_height="wrap_content"
-        android:textColor="#616161"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:text="login"
         android:textStyle="italic"

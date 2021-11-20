@@ -57,8 +57,7 @@ public class HistoryAdapter extends ArrayAdapter<HistoryRequest>  {
         viewHolder = new ViewHolder();
         LayoutInflater vi = LayoutInflater.from(getContext());
         View cell = vi.inflate(R.layout.history_title_layout, parent, false);
-        Log.d("historyadapter","in!!!!!!!!!!!!!!!!!");
-        
+
         // binding view parts to view holder
 
         /*Title View*/

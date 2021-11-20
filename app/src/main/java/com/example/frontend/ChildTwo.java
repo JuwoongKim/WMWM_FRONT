@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,14 +74,6 @@ public class ChildTwo extends Fragment {
         }
     }
 
-
-
-
-
-
-
-
-
     private ShareViewModel sharedViewModel;
     private String userNo;
 
@@ -105,10 +98,14 @@ public class ChildTwo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_child_two,container,false);
+
+        viewPager =rootView.findViewById(R.id.child_two_container);
+        pagerAdapter = new ChildTwoPageAdapter(getChildFragmentManager(),getLifecycle());
+
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setCurrentItem(0);
 
         childTwoOne_fragment=  new ChildTwoOne();
         childTwoTwo_fragment= new ChildTwoTwo();
@@ -116,43 +113,25 @@ public class ChildTwo extends Fragment {
         childTwoFour_fragment= new ChildTwoFour();
         childTwoFive_fragment=  new ChildTwoFive();
 
-        viewPager =rootView.findViewById(R.id.child_two_container);
-        pagerAdapter = new ChildTwoPageAdapter(getChildFragmentManager(),getLifecycle());
-
         pagerAdapter.addFragment(childTwoOne_fragment);
         pagerAdapter.addFragment(childTwoTwo_fragment);
         pagerAdapter.addFragment(childTwoThree_fragment);
         pagerAdapter.addFragment(childTwoFour_fragment);
         pagerAdapter.addFragment(childTwoFive_fragment);
 
-
-        viewPager.setAdapter(pagerAdapter);
-        viewPager.setCurrentItem(0);
-
         child_two_tabs = rootView.findViewById(R.id.child_two_tabs);
 
         new TabLayoutMediator(child_two_tabs,viewPager,(tab, position) -> tab.setText(titles[position])).attach();
-
-
         sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
-
         sharedViewModel.getLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                System.out.println("this is ChildTwo");
+                Log.d("childTwo", "shareViewModel On Changed!");
                 userNo = s;
-                System.out.println(userNo);
-                System.out.println("======================");
-
-
-
+                System.out.println("userNo:"+userNo);
             }
         });
 
-
-
         return rootView;
-
-
     }
 }
