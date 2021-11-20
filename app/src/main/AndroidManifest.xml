@@ -59,12 +59,15 @@
             android:name=".ShareActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".MainActivity" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".LoadActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

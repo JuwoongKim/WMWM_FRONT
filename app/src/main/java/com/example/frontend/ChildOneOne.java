@@ -138,11 +138,21 @@ public class ChildOneOne extends Fragment {
 
                             ArrayList<Entry> values = new ArrayList<>();
 
-                            values.add(new Entry(0, wcount.getFive()));
-                            values.add(new Entry(1, wcount.getFour()));
-                            values.add(new Entry(2, wcount.getThree()));
-                            values.add(new Entry(3, wcount.getTwo()));
-                            values.add(new Entry(4, wcount.getOne()));
+                            if(wcount.getFive()!=0)  { values.add(new Entry(0, wcount.getFive()/2)); }
+                            else{values.add(new Entry(0, wcount.getFive()));}
+
+                            if(wcount.getFour()!=0)  { values.add(new Entry(1, wcount.getFour()/2)); }
+                            else{values.add(new Entry(1, wcount.getFour()));}
+
+                            if(wcount.getThree()!=0)  { values.add(new Entry(2, wcount.getThree()/2)); }
+                            else{values.add(new Entry(2, wcount.getThree()));}
+
+                            if(wcount.getTwo()!=0)  { values.add(new Entry(3, wcount.getTwo()/2)); }
+                            else{values.add(new Entry(3, wcount.getTwo()));}
+
+                            if(wcount.getOne()!=0)  { values.add(new Entry(4, wcount.getOne()/2)); }
+                            else{values.add(new Entry(4, wcount.getOne()));}
+
 
                             LineDataSet set1;
                             set1 = new LineDataSet(values, "DataSet 1 ");
@@ -230,28 +240,21 @@ public class ChildOneOne extends Fragment {
         // 여기서부터 그래프 시작
         if(checkbit !=0) {
             ArrayList<Entry> values = new ArrayList<>();
-
             values.add(new Entry(0, wcount.getFive()));
             values.add(new Entry(1, wcount.getFour()));
             values.add(new Entry(2, wcount.getThree()));
             values.add(new Entry(3, wcount.getTwo()));
             values.add(new Entry(4, wcount.getOne()));
-
             LineDataSet set1;
             set1 = new LineDataSet(values, "DataSet 1 ");
-
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             dataSets.add(set1);
-
             LineData data = new LineData(dataSets);
-
             set1.setCircleColor(Color.BLACK);
             set1.setCircleColor(Color.BLACK);
-
             lineChart.setData(data);
         }
         //그래프 끝
-
 */
 
         return rootView;

@@ -33,6 +33,9 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.comix.overwatch.HiveProgressView;
+import com.example.frontend.entity.HistoryRequest;
+import com.example.frontend.entity.HistoryResponse;
+import com.example.frontend.entity.LoginResponse;
 import com.example.frontend.entity.Member;
 import com.example.frontend.retrofit.IRetrofit;
 import com.example.frontend.retrofit.RetrofitClient;
@@ -136,22 +139,8 @@ public class BlankFragment extends Fragment {
     private String friendEndpointId;
     private String friendName;
 
-    private String status;
 
-    // View
     private View myView;
-    //Button
-    private Button shareButton;
-    private Button disconnectButton;
-
-    //Test용 변수
-    private TextView myNameText;
-    private TextView statusText;
-    private TextView friendNameText;
-
-
-    private Spinner typeSpinner;
-    private String[] items = {"typeA","typeB","typeC","typeD","typeE" };
 
 
 
@@ -163,6 +152,10 @@ public class BlankFragment extends Fragment {
 
     private IRetrofit iRetrofit;
     String userName ="";
+
+
+    HistoryRequest historyRequest;
+
 
     // Callbacks for receiving payloads
     private final PayloadCallback payloadCallback =
@@ -187,17 +180,23 @@ public class BlankFragment extends Fragment {
                 @Override
                 public void onConnectionInitiated(String endpointId, ConnectionInfo connectionInfo) {
 
+                    System.out.println("=============================");
+                    System.out.println(myloginId);
+                    System.out.println("Succeed ConnectionInitiated");
+
                     connectionsClient.acceptConnection(endpointId, payloadCallback);
-                    friendName = connectionInfo.getEndpointName();
+                    friendLoginId = connectionInfo.getEndpointName();
+
+
                     //retrofit 생성
+                    /*
                     iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
                     Call<Member> call = iRetrofit.getMemberInfo(friendName);
-                    Log.d("onConnectionInitiatedfriendName", friendName);
+                    Log.d("onConnectionInitiatedfriendName", friendLoginId);
                     call.enqueue(new Callback<Member>() {
                         @Override
                         public void onResponse(Call<Member> call, Response<Member> response) {
                             Log.d("onConnectionInitiated", "Data fetch success");
-
                             if(response.isSuccessful() && response.body() != null){
                                 //response.body()를 result에 저장
                                 Member result = response.body();
@@ -216,7 +215,6 @@ public class BlankFragment extends Fragment {
                                     .show();
                         }
                     });
-
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setTitle("Check")
                             .setMessage("Do you want to connect with "+userName+"?")
@@ -228,7 +226,6 @@ public class BlankFragment extends Fragment {
                                     SuccessFragment successFragment = new SuccessFragment();
                                     successFragment.setArguments(bundle_my);
                                     ((ShareActivity)getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.home_ly, successFragment).commit();
-
                                 }
                             })
                             .setNegativeButton("no", new DialogInterface.OnClickListener() {
@@ -239,27 +236,132 @@ public class BlankFragment extends Fragment {
                             })
                             .create()
                             .show();
+                     */
 
-                }
+                };
 
                 @Override
                 public void onConnectionResult(String endpointId, ConnectionResolution result) {
                     if (result.getStatus().isSuccess()) {
                         System.out.println("onConnectionResult: connection succeess");
                         System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+
+                        connectionsClient.stopDiscovery();
+                        connectionsClient.stopAdvertising();
+
+                        iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);
+                        Call<Member> call = iRetrofit.getMemberInfo(friendLoginId);
+                        Log.d("onConnectionInitiatedfriendName", friendLoginId);
+                        call.enqueue(new Callback<Member>() {
+                            @Override
+                            public void onResponse(Call<Member> call, Response<Member> response) {
+                                Log.d("onConnectionInitiated", "Data fetch success");
+
+                                if(response.isSuccessful() && response.body() != null){
+                                    //response.body()를 result에 저장
+                                    Member result = response.body();
+                                    List<Member> memberInfo = result.getMemberInfo();
+                                    userName = memberInfo.get(0).getUserName();
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<Member> call, Throwable t) {
+                                Log.d("info::::::", t.toString());
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder.setTitle("알림")
+                                        .setMessage("예기치 못한 오류가 발생하였습니다.\n 고객센터에 문의바랍니다.")
+                                        .setPositiveButton("확인", null)
+                                        .create()
+                                        .show();
+                            }
+                        });
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle("Check")
+                                .setMessage("Do you want to connect with "+userName+"?")
+                                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Bundle bundle_my = new Bundle(); // 번들을 통해 값 전달
+                                        bundle_my.putString("userName", userName);//번들에 넘길 값 저장
+                                        SuccessFragment successFragment = new SuccessFragment();
+                                        successFragment.setArguments(bundle_my);
+                                        ((ShareActivity)getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.home_ly, successFragment).commit();
+
+                                    }
+                                })
+                                .setNegativeButton("no", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        //getActivity().finish();
+                                    }
+                                })
+                                .create()
+                                .show();
+
+
+                        System.out.println("++++++++++++++++++++++++++++++++===================44444444444444");
+                        System.out.println("88888888888888888888888888888888888");
                         System.out.println(myloginId);
                         System.out.println(friendLoginId);
-                        System.out.println(activity_type);
                         System.out.println(latitude);
+                        System.out.println(longtitude);
+                        System.out.println("88888888888888888888888888888888888");
+                        System.out.println("++++++++++++++++++++++++++++++++===================44444444444444");
+
+                        historyRequest =new HistoryRequest();
+                        historyRequest.setLoginId(myloginId);
+                        historyRequest.setSubLoginId(friendLoginId);
+                        historyRequest.setLatitude(Double.toString(latitude));
+                        historyRequest.setLongitude(Double.toString(longtitude));
+
+                        Call<HistoryResponse> call2= iRetrofit.insertHistoryInfo(historyRequest);
+                        call2.enqueue(new Callback<HistoryResponse>() {
+                            @Override
+                            public void onResponse(Call<HistoryResponse> call, Response<HistoryResponse> response) {
+
+                                if(response.isSuccessful()&&response.body()!=null)
+                                {
+                                    HistoryResponse result = response.body();
+
+                                    //받은 코드 저장
+                                    String resultCode = result.getResultCode();
+
+                                    String success = "200";
+                                    String errorId = "300";
+
+                                    if(resultCode.equals(success)) {
+
+                                        System.out.println("scuceessssssss");
+                                    }
+
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<HistoryResponse> call, Throwable t) {
+
+                            }
+                        });
+
+
                         System.out.println(longtitude);
                         connectionsClient.stopDiscovery();
                         connectionsClient.stopAdvertising();
                         friendEndpointId = endpointId;
-                        setStatusText("finished");
+
 
                     } else {
+                        System.out.println("==========");
+                        System.out.println(myloginId);
                         System.out.println("onConnectionResult: connection failed");
                     }
+
+
+                    //
+
+
+
                 }
 
                 @Override
@@ -276,13 +378,44 @@ public class BlankFragment extends Fragment {
             new EndpointDiscoveryCallback() {
                 @Override
                 public void onEndpointFound(String endpointId, DiscoveredEndpointInfo info) {
-                    System.out.println(myName);
-                    System.out.println(" ===================i am a discovery part======================");
-                    connectionsClient.requestConnection(myName, endpointId, connectionLifecycleCallback);
+                    System.out.println("=============================");
+                    System.out.println(myloginId);
+                    System.out.println("discover Found EndPoint");
+                    System.out.println();
+
+                    connectionsClient.requestConnection(myloginId, endpointId, connectionLifecycleCallback)
+                            .addOnSuccessListener(
+                                    (Void unused)->{
+                                        System.out.println("========");
+                                        System.out.println(myloginId);
+                                        System.out.println("========");
+                                        System.out.println("========");
+                                    }
+                            )
+                            .addOnFailureListener(
+                                    (Exception e)->{
+                                        System.out.println("");
+                                        System.out.println(myloginId);
+                                        System.out.println("fail request conection");
+                                        System.out.println(e);
+                                        System.out.println("");
+                                        System.out.println("end explain");
+                                        System.out.println("");
+                                        connectionsClient.stopDiscovery();
+                                        connectionsClient.stopAdvertising();
+                                        findFriend();
+
+                                    }
+
+                            );
+
                 }
 
                 @Override
-                public void onEndpointLost(String endpointId) {}
+                public void onEndpointLost(String endpointId) {
+                    System.out.println(myloginId);
+                    System.out.println("has lost discovered endpoint");
+                }
             };
 
 
@@ -318,42 +451,6 @@ public class BlankFragment extends Fragment {
 
 
 
-/*        myNameText = myView.findViewById(R.id.myName);
-        statusText = myView.findViewById(R.id.status);
-        friendNameText = myView.findViewById(R.id.frinedName);*/
-
-
-        //typeSpinner =myView.findViewById(R.id.first_spinner);
-/*        disconnectButton= myView.findViewById(R.id.disconnect);
-        disconnectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                connectionsClient.disconnectFromEndpoint(friendEndpointId);
-                resetAll();
-            }
-        });*/
-
-
-/*        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                getContext(), android.R.layout.simple_spinner_item, items);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        typeSpinner.setAdapter(adapter);
-
-        typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                activity_type= items[position];
-
-                //////////////////////// 여기서 activitiy 완료됨
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });*/
-
-
 
         image_click.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -368,70 +465,27 @@ public class BlankFragment extends Fragment {
                 click_text.setText("");
                 clickfin.setVisibility(View.INVISIBLE);
 
-                System.out.println("the test is good ");
-
 
                 getLocationInfo();
 
                 if (!hasPermissions(getContext(), REQUIRED_PERMISSIONS)) {
+                    ;
+                    // no problemmmm
                     requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_REQUIRED_PERMISSIONS);
                 }
 
+
                 if (getArguments() != null)
                 {
-                    myName = getArguments().getString("loginId");
-                    myloginId= myName;
-                    //setMyNameText(myName);
-                    System.out.println("=========== the name is =============");
-                    System.out.println(myName);
+                    myloginId = getArguments().getString("loginId");
                     findFriend();
-
                 }
-                // Button Activity
+
             }
         });
 
-
-
-
-
-/*        shareButton = myView.findViewById(R.id.btn_share);
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-
-                // 통신해야하는 부분
-
-                System.out.println("the test is good ");
-
-                getLocationInfo();
-
-                if (!hasPermissions(getContext(), REQUIRED_PERMISSIONS)) {
-                    requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_REQUIRED_PERMISSIONS);
-                }
-
-                if (getArguments() != null)
-                {
-                    myName = getArguments().getString("loginId");
-                    myloginId= myName;
-                    setMyNameText(myName);
-                    System.out.println("=========== the name is =============");
-                    System.out.println(myName);
-                    findFriend();
-
-                }
-
-
-
-                // Button Activity
-            }
-        });*/
-
-        // Inflate the layout for this fragment
         return myView;
     }
-
-
 
 
     /** Returns true if the app was granted all the permissions. Otherwise, returns false. */
@@ -469,69 +523,73 @@ public class BlankFragment extends Fragment {
     public void findFriend() {
         startAdvertising();
         startDiscovery();
-        //setStatusText("Searching");
+
     }
+
 
     private void startDiscovery() {
 
         connectionsClient.startDiscovery(
                 getActivity().getPackageName(),
                 endpointDiscoveryCallback,
-                new DiscoveryOptions.Builder().setStrategy(STRATEGY).build());
+                new DiscoveryOptions.Builder().setStrategy(STRATEGY).build())
+                .addOnSuccessListener((Void unused)->
+                        {
+                            System.out.println("");
+                            System.out.println(myloginId);
+                            System.out.println("is startingdiscovery");
+                            System.out.println("============================");}
+                )
+                .addOnFailureListener((Exception e)->{
+
+                    System.out.println("");
+                    System.out.println(myloginId);
+                    System.out.println("is fail discovery");
+                    System.out.println("============================");
+                    System.out.println(e);
+                });
+
     }
 
     private void startAdvertising() {
 
         connectionsClient.startAdvertising(
-                myName,
+                myloginId,
                 getActivity().getPackageName(),
                 connectionLifecycleCallback,
-                new AdvertisingOptions.Builder().setStrategy(STRATEGY).build());
+                new AdvertisingOptions.Builder().setStrategy(STRATEGY).build())
+                .addOnSuccessListener( (Void unused)->{
+                    System.out.println("");
+                    System.out.println(myloginId);
+                    System.out.println("is startingadvertising");
+                    System.out.println("============================");;
+                }).addOnFailureListener((Exception e)->
+                {  System.out.println("disdis");
+                    System.out.println(e);}
+
+        );
     }
 
-    public void setMyNameText(String myName){
-//        myNameText.setText(myName);
-    }
 
-
-    public  void setStatusText(String status)
-    {
-//        statusText.setText(status);
-    }
-
-    public  void setFriendNameText(String friendName){
-        friendLoginId = friendName;    ///////////////////여기서  friend 이름을 찾는다.
-        friendNameText.setText(friendName);
-    }
 
     public  void resetAll(){
-
-        String status = "disconnected";
-        String friendName = " ";
-
-        setStatusText(status);
-        setFriendNameText(friendName);
-
-
     }
 
 
     public void getLocationInfo(){
 
-        System.out.println("SIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIBALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
 
         LocationManager manager = (LocationManager)getContext().getSystemService(Context.LOCATION_SERVICE);
 
 
         try{
 
-            System.out.println("SIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIBALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL2");
+
             System.out.println("test");
             Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
             if(location!=null) {
                 System.out.println("test2");
-                System.out.println("SIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIBALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL3");
                 double latitude_ = location.getLatitude();
                 double longtitude_ = location.getLongitude();
                 latitude = latitude_;
@@ -541,7 +599,6 @@ public class BlankFragment extends Fragment {
                 System.out.println(message);
 
             }else{
-                System.out.println("SIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIBALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL4");
             }
 
 

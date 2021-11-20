@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <font
-        android:font="@font/nanum"
+        android:font="@font/cookie"
         android:fontStyle="normal"
         android:fontWeight="400"
-        app:font="@font/nanum"
+        app:font="@font/cookie"
         app:fontStyle="normal"
         app:fontWeight="500"
         tools:targetApi="o" />

@@ -36,6 +36,8 @@ public class HistoryRequest {
     @SerializedName("regDt")
     public String regDt;
 
+    public HistoryRequest(){}
+
     public HistoryRequest(String loginId, String subLoginId, String aType, String latitude, String longitude) {
         this.loginId = loginId;
         this.subLoginId = subLoginId;

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/backgra"
+    tools:context=".LoadActivity">
+
+
+
+    <LinearLayout
+        android:id="@+id/main_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="40dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/connect_text"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center|left|bottom"
+                android:fontFamily="@font/cookie"
+                android:text="Welcome!"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="-8dp"/>
+
+            <TextView
+                android:id="@+id/connect_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/connect_text"
+                android:gravity="center|left"
+                android:fontFamily="@font/cookie"
+                android:text="This is"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="-10dp"/>
+
+            <TextView
+                android:id="@+id/connect_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/connect_text2"
+                android:gravity="center|left|top"
+                android:fontFamily="@font/cookie"
+                android:text="WMWM"
+                android:textColor="@color/btnRequest"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:id="@+id/image_crown"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="-10dp"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@id/connect_text3"
+                android:src="@drawable/crown" />
+
+            <TextView
+                android:id="@+id/connect_text4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/connect_text3"
+                android:gravity="center|left|top"
+                android:fontFamily="@font/cookie"
+                android:text="record your off-line meeting..."
+                android:textColor="@color/titleBadgeText"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+</FrameLayout>
