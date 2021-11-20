@@ -1,417 +1,419 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/editback"
-    android:visibility="visible"
+    android:background="@color/white"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="340dp"
-        android:layout_marginTop="-90dp"
-        android:layout_marginBottom="10dp"
-        android:elevation="100dp"
-        app:cardCornerRadius="100dp">
-
-        <ImageView
-            android:id="@+id/image_back"
-            android:src="@drawable/cropheart2"
-            android:layout_marginTop="90dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="115dp"
-            android:layout_height="115dp"
-            app:cardCornerRadius="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#78000000">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/image1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:paddingTop="3dp"
-                android:paddingBottom="3dp" />
-        </androidx.cardview.widget.CardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="280dp">
-            <!-- RIGHT TITLE PART -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/content_user_name_top"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="25sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="All Sharings: 20"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
-            </RelativeLayout>
-        </LinearLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
-    <!-- content body layout -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/trans0"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingTop="8dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="5dp">
-
-        <!-- avatar and name part -->
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/content_name_badge"
-                style="@style/ContentMainBadgeTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginBottom="1dp"
-                android:text="@string/name_badge"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/content_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/content_name_badge"
-                android:layout_alignStart="@id/content_name_badge"
-                android:layout_alignLeft="@id/content_name_badge"
-                android:textColor="@color/mainTextColor"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/content_user_name"
-                android:layout_alignStart="@id/content_user_name"
-                android:layout_below="@id/content_user_name"
-                android:textColor="@color/mainTextColor"
-                android:textSize="12sp" />
-
-
-
-        </RelativeLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="3dp"
-            android:src="@color/white" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/content_telno1_badge"
-                    style="@style/ContentMainBadgeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:text="@string/telno1_badge"
-                    android:textColor="@color/white"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/content_telno1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/content_telno1_badge"
-                    android:layout_alignStart="@id/content_telno1_badge"
-                    android:layout_alignLeft="@id/content_telno1_badge"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/content_telno1"
-                    android:layout_alignStart="@id/content_telno1"
-                    android:layout_below="@id/content_telno1"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="12sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/content_email_badge"
-                    style="@style/ContentMainBadgeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:text="@string/email_badge"
-                    android:textColor="@color/white"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/content_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/content_email_badge"
-                    android:layout_alignStart="@id/content_email_badge"
-                    android:layout_alignLeft="@id/content_email_badge"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <!-- divider line -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="3dp"
-            android:src="@color/white" />
-
-        <!-- addresses part -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="-5dp"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/content_work_type_badge"
-                    style="@style/ContentMainBadgeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:text="@string/work_type_badge"
-                    android:textColor="@color/white"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/content_work_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/content_work_type_badge"
-                    android:layout_alignStart="@id/content_work_type_badge"
-                    android:layout_alignLeft="@id/content_work_type_badge"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:theme="@style/EditTextTheme" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/content_residence_badge"
-                    style="@style/ContentMainBadgeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:text="@string/residence_badge"
-                    android:textColor="@color/white"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/content_residence"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/content_residence_badge"
-                    android:layout_alignStart="@id/content_residence_badge"
-                    android:layout_alignLeft="@id/content_residence_badge"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:theme="@style/EditTextTheme" />
-
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <!-- divider line -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="3dp"
-            android:src="@color/white" />
-
-        <!-- dates part -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:layout_marginBottom="-5dp">
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/content_mbti_badge"
-                    style="@style/ContentMainBadgeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:text="@string/mbti_badge"
-                    android:textColor="@color/white"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/content_mbti"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/content_mbti_badge"
-                    android:layout_alignStart="@id/content_mbti_badge"
-                    android:layout_alignLeft="@id/content_mbti_badge"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:theme="@style/EditTextTheme" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/content_major_badge"
-                    style="@style/ContentMainBadgeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:text="@string/major_badge"
-                    android:textColor="@color/white"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/content_major"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/content_major_badge"
-                    android:layout_alignStart="@id/content_major_badge"
-                    android:layout_alignLeft="@id/content_major_badge"
-                    android:textColor="@color/mainTextColor"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:theme="@style/EditTextTheme" />
-
-
-            </RelativeLayout>
-
-
-        </LinearLayout>
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="30dp">
-            <TextView
+            android:orientation="vertical" >
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="17sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/with"
+                    style="@style/TitleBadgeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="Edit"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="After editing, click the save button.">
+                android:layout_marginTop="20dp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/image1"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/btnRequest"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- RIGHT TITLE PART -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/content_user_name_top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="25sp" />
+                </RelativeLayout>
+
+            </LinearLayout>
 
 
-            </TextView>
+
+
+            <!-- content body layout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="8dp">
+
+
+                <!-- avatar and name part -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/content_name_badge"
+                        style="@style/EditMainBadgeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginBottom="3dp"
+                        android:text="@string/name_badge" />
+
+
+
+                    <TextView
+                        android:id="@+id/content_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/content_name_badge"
+                        android:layout_alignStart="@id/content_name_badge"
+                        android:layout_below="@id/content_name_badge"
+                        android:layout_marginBottom="3dp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/content_user_name"
+                        android:layout_alignStart="@id/content_user_name"
+                        android:layout_below="@id/content_user_name"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="4dp"
+                    android:src="@color/contentDividerLine" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/content_telno1_badge"
+                            style="@style/EditMainBadgeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginBottom="3dp"
+                            android:text="@string/telno1_badge" />
+
+                        <TextView
+                            android:id="@+id/content_telno1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/content_telno1_badge"
+                            android:layout_alignStart="@id/content_telno1_badge"
+                            android:layout_below="@id/content_telno1_badge"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/content_telno1"
+                            android:layout_alignStart="@id/content_telno1"
+                            android:layout_below="@id/content_telno1"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/content_email_badge"
+                            style="@style/EditMainBadgeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginBottom="3dp"
+                            android:text="@string/email_badge" />
+
+                        <TextView
+                            android:id="@+id/content_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/content_email_badge"
+                            android:layout_alignStart="@id/content_email_badge"
+                            android:layout_below="@id/content_email_badge"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/content_email"
+                            android:layout_alignStart="@id/content_email"
+                            android:layout_below="@id/content_email"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- divider line -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="4dp"
+                    android:src="@color/contentDividerLine" />
+
+                <!-- addresses part -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/content_work_type_badge"
+                            style="@style/EditMainBadgeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginBottom="3dp"
+                            android:text="@string/work_type_badge" />
+
+                        <EditText
+                            android:id="@+id/content_work_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_work_type_badge"
+                            android:layout_alignStart="@id/content_work_type_badge"
+                            android:layout_alignLeft="@id/content_work_type_badge"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:theme="@style/EditTextTheme" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/content_residence_badge"
+                            style="@style/EditMainBadgeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginBottom="3dp"
+                            android:text="@string/residence_badge" />
+
+                        <EditText
+                            android:id="@+id/content_residence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_residence_badge"
+                            android:layout_alignStart="@id/content_residence_badge"
+                            android:layout_alignLeft="@id/content_residence_badge"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:theme="@style/EditTextTheme" />
+
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- divider line -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="4dp"
+                    android:src="@color/contentDividerLine" />
+
+                <!-- dates part -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/content_mbti_badge"
+                            style="@style/EditMainBadgeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/mbti_badge" />
+
+                        <EditText
+                            android:id="@+id/content_mbti"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_mbti_badge"
+                            android:layout_alignStart="@id/content_mbti_badge"
+                            android:layout_alignLeft="@id/content_mbti_badge"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:theme="@style/EditTextTheme" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/content_major_badge"
+                            style="@style/EditMainBadgeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:text="@string/major_badge" />
+
+                        <EditText
+                            android:id="@+id/content_major"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_major_badge"
+                            android:layout_alignStart="@id/content_major_badge"
+                            android:layout_alignLeft="@id/content_major_badge"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:theme="@style/EditTextTheme" />
+
+
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="#FBC02D"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
+                        android:gravity="center"
+                        android:text="After editing, click the save button.">
+
+
+                    </TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/save_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:backgroundTint="#FFCE3B"
+            android:contentDescription="@string/email_badge"
+            android:elevation="10dp"
+            app:borderWidth="0dp"
+            app:srcCompat="@drawable/ic_baseline_save_alt_24" />
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/save_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        android:backgroundTint="#FFCE3B"
-        android:contentDescription="@string/email_badge"
-        android:elevation="10dp"
-        app:borderWidth="0dp"
-        app:srcCompat="@drawable/ic_baseline_save_alt_24" />
+
+
 
 </LinearLayout>

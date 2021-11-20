@@ -81,6 +81,7 @@ public class ChildTwoThree extends Fragment {
     private Context context;
     private ChildTwoAdapter adapter;
     private ListView theListView;
+    private int rank=0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -108,6 +109,8 @@ public class ChildTwoThree extends Fragment {
 
                             if(periodRankList != null && periodRankList.size() != 0){
                                 for(Rank rankInfo : periodRankList){
+                                    rank++;
+                                    rankInfo.setRank(String.valueOf(rank));
                                     Log.d("rank", rankInfo.toString());
                                     rankList.add(rankInfo);
                                 }

@@ -4,48 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/backgra"
     android:orientation="vertical">
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
-        android:elevation="100dp"
-        android:layout_marginTop="-90dp"
-        app:cardCornerRadius="100dp"
+        <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="340dp"
-        android:layout_marginBottom="10dp">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/image_back"
-            android:src="@drawable/cropheart2"
-            android:layout_marginTop="90dp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="115dp"
-            android:layout_height="115dp"
-            app:cardCornerRadius="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp">
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/image1"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:paddingTop="3dp"
-                android:paddingBottom="3dp"/>
-        </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/with"
+                    style="@style/TitleBadgeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="My Info"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="280dp">
+            android:gravity="center"
+            android:layout_marginTop="40dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/image1"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <!-- RIGHT TITLE PART -->
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -56,28 +70,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="25sp" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="All Sharings: 20"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
-            </RelativeLayout>
         </LinearLayout>
 
 
 
-    </androidx.cardview.widget.CardView>
 
     <!-- content body layout -->
     <LinearLayout
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
-                android:layout_marginBottom="1dp"
+                android:layout_marginBottom="3dp"
                 android:text="@string/name_badge" />
 
 
@@ -114,7 +114,8 @@
                 android:layout_alignLeft="@id/content_name_badge"
                 android:layout_alignStart="@id/content_name_badge"
                 android:layout_below="@id/content_name_badge"
-                android:textColor="@color/mainTextColor"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
 
@@ -156,6 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="3dp"
                     android:text="@string/telno1_badge" />
 
                 <TextView
@@ -165,7 +167,7 @@
                     android:layout_alignLeft="@id/content_telno1_badge"
                     android:layout_alignStart="@id/content_telno1_badge"
                     android:layout_below="@id/content_telno1_badge"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
                 <TextView
@@ -174,7 +176,7 @@
                     android:layout_alignLeft="@id/content_telno1"
                     android:layout_alignStart="@id/content_telno1"
                     android:layout_below="@id/content_telno1"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="12sp" />
 
             </RelativeLayout>
@@ -191,6 +193,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="3dp"
                     android:text="@string/email_badge" />
 
                 <TextView
@@ -200,7 +203,7 @@
                     android:layout_alignLeft="@id/content_email_badge"
                     android:layout_alignStart="@id/content_email_badge"
                     android:layout_below="@id/content_email_badge"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
                 <TextView
@@ -209,7 +212,7 @@
                     android:layout_alignLeft="@id/content_email"
                     android:layout_alignStart="@id/content_email"
                     android:layout_below="@id/content_email"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="12sp" />
 
 
@@ -246,6 +249,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_marginBottom="3dp"
                     android:text="@string/work_type_badge" />
 
                 <TextView
@@ -255,7 +259,7 @@
                     android:layout_alignLeft="@id/content_work_type_badge"
                     android:layout_alignStart="@id/content_work_type_badge"
                     android:layout_below="@id/content_work_type_badge"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -266,7 +270,7 @@
                     android:layout_alignLeft="@id/content_work_type"
                     android:layout_alignStart="@id/content_work_type"
                     android:layout_below="@id/content_work_type"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="12sp" />
 
             </RelativeLayout>
@@ -283,6 +287,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_marginBottom="3dp"
                     android:text="@string/residence_badge" />
 
                 <TextView
@@ -292,7 +297,7 @@
                     android:layout_alignLeft="@id/content_residence_badge"
                     android:layout_alignStart="@id/content_residence_badge"
                     android:layout_below="@id/content_residence_badge"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -303,7 +308,7 @@
                     android:layout_alignLeft="@id/content_residence"
                     android:layout_alignStart="@id/content_residence"
                     android:layout_below="@id/content_residence"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="12sp" />
 
 
@@ -348,7 +353,7 @@
                     android:layout_alignLeft="@id/content_mbti_badge"
                     android:layout_alignStart="@id/content_mbti_badge"
                     android:layout_below="@id/content_mbti_badge"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -374,7 +379,7 @@
                     android:layout_alignLeft="@id/content_major_badge"
                     android:layout_alignStart="@id/content_major_badge"
                     android:layout_below="@id/content_major_badge"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -401,6 +406,9 @@
         app:borderWidth="0dp"
         android:elevation="10dp"
         />
+        </LinearLayout>
+        </ScrollView>
+
 
 
 </LinearLayout>

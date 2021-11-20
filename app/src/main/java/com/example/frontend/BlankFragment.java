@@ -9,19 +9,13 @@ import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +29,6 @@ import com.bumptech.glide.Glide;
 import com.comix.overwatch.HiveProgressView;
 import com.example.frontend.entity.HistoryRequest;
 import com.example.frontend.entity.HistoryResponse;
-import com.example.frontend.entity.LoginResponse;
 import com.example.frontend.entity.Member;
 import com.example.frontend.retrofit.IRetrofit;
 import com.example.frontend.retrofit.RetrofitClient;
@@ -54,11 +47,8 @@ import com.google.android.gms.nearby.connection.PayloadTransferUpdate;
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate.Status;
 import com.google.android.gms.nearby.connection.Strategy;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
-import io.supercharge.funnyloader.FunnyLoader;
 import nl.dionsegijn.konfetti.models.Shape;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -197,6 +187,7 @@ public class BlankFragment extends Fragment {
                         @Override
                         public void onResponse(Call<Member> call, Response<Member> response) {
                             Log.d("onConnectionInitiated", "Data fetch success");
+
                             if(response.isSuccessful() && response.body() != null){
                                 //response.body()를 result에 저장
                                 Member result = response.body();
@@ -215,6 +206,7 @@ public class BlankFragment extends Fragment {
                                     .show();
                         }
                     });
+
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setTitle("Check")
                             .setMessage("Do you want to connect with "+userName+"?")
@@ -226,6 +218,7 @@ public class BlankFragment extends Fragment {
                                     SuccessFragment successFragment = new SuccessFragment();
                                     successFragment.setArguments(bundle_my);
                                     ((ShareActivity)getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.home_ly, successFragment).commit();
+
                                 }
                             })
                             .setNegativeButton("no", new DialogInterface.OnClickListener() {
@@ -236,13 +229,9 @@ public class BlankFragment extends Fragment {
                             })
                             .create()
                             .show();
+
                      */
 
-<<<<<<< HEAD
-=======
-                     */
-
->>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
                 };
 
                 @Override
@@ -325,7 +314,6 @@ public class BlankFragment extends Fragment {
                             @Override
                             public void onResponse(Call<HistoryResponse> call, Response<HistoryResponse> response) {
 
-<<<<<<< HEAD
                                 if(response.isSuccessful()&&response.body()!=null)
                                 {
                                     HistoryResponse result = response.body();
@@ -342,24 +330,6 @@ public class BlankFragment extends Fragment {
                                     }
 
                                 }
-=======
-                                    if(response.isSuccessful()&&response.body()!=null)
-                                    {
-                                        HistoryResponse result = response.body();
-
-                                        //받은 코드 저장
-                                        String resultCode = result.getResultCode();
-
-                                        String success = "200";
-                                        String errorId = "300";
-
-                                        if(resultCode.equals(success)) {
-
-                                            System.out.println("scuceessssssss");
-                                        }
-
-                                    }
->>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
                             }
 
                             @Override
@@ -408,7 +378,6 @@ public class BlankFragment extends Fragment {
                     System.out.println();
 
                     connectionsClient.requestConnection(myloginId, endpointId, connectionLifecycleCallback)
-<<<<<<< HEAD
                             .addOnSuccessListener(
                                     (Void unused)->{
                                         System.out.println("========");
@@ -433,32 +402,6 @@ public class BlankFragment extends Fragment {
                                     }
 
                             );
-=======
-                    .addOnSuccessListener(
-                            (Void unused)->{
-                                System.out.println("========");
-                                System.out.println(myloginId);
-                                System.out.println("========");
-                                System.out.println("========");
-                            }
-                    )
-                    .addOnFailureListener(
-                     (Exception e)->{
-                         System.out.println("");
-                         System.out.println(myloginId);
-                         System.out.println("fail request conection");
-                         System.out.println(e);
-                         System.out.println("");
-                         System.out.println("end explain");
-                         System.out.println("");
-                         connectionsClient.stopDiscovery();
-                         connectionsClient.stopAdvertising();
-                         findFriend();
-
-                     }
-
-                    );
->>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
 
                 }
 
@@ -510,6 +453,8 @@ public class BlankFragment extends Fragment {
 
                 image_click = (ImageView) myView.findViewById(R.id.image_click);
                 Glide.with(getContext()).load(R.drawable.loading2).into(image_click);
+
+
                 button_back = (FrameLayout) myView.findViewById(R.id.button_back);
                 button_back.setBackgroundColor(Color.parseColor("#00000000"));
                 click_text = (TextView) myView.findViewById(R.id.click_text);
@@ -520,11 +465,7 @@ public class BlankFragment extends Fragment {
                 getLocationInfo();
 
                 if (!hasPermissions(getContext(), REQUIRED_PERMISSIONS)) {
-<<<<<<< HEAD
                     ;
-=======
-         ;
->>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
                     // no problemmmm
                     requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_REQUIRED_PERMISSIONS);
                 }
@@ -589,7 +530,6 @@ public class BlankFragment extends Fragment {
                 endpointDiscoveryCallback,
                 new DiscoveryOptions.Builder().setStrategy(STRATEGY).build())
                 .addOnSuccessListener((Void unused)->
-<<<<<<< HEAD
                         {
                             System.out.println("");
                             System.out.println(myloginId);
@@ -602,20 +542,6 @@ public class BlankFragment extends Fragment {
                     System.out.println(myloginId);
                     System.out.println("is fail discovery");
                     System.out.println("============================");
-=======
-                {
-                    System.out.println("");
-                    System.out.println(myloginId);
-                    System.out.println("is startingdiscovery");
-                    System.out.println("============================");}
-                        )
-                .addOnFailureListener((Exception e)->{
-
-                        System.out.println("");
-                        System.out.println(myloginId);
-                        System.out.println("is fail discovery");
-                        System.out.println("============================");
->>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
                     System.out.println(e);
                 });
 
@@ -634,17 +560,10 @@ public class BlankFragment extends Fragment {
                     System.out.println("is startingadvertising");
                     System.out.println("============================");;
                 }).addOnFailureListener((Exception e)->
-<<<<<<< HEAD
                 {  System.out.println("disdis");
                     System.out.println(e);}
 
         );
-=======
-                 {  System.out.println("disdis");
-                     System.out.println(e);}
-
-                );
->>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
     }
 
 
@@ -687,3 +606,4 @@ public class BlankFragment extends Fragment {
 
     }
 }
+

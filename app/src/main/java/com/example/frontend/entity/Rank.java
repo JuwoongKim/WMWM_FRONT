@@ -24,6 +24,9 @@ public class Rank {
     @SerializedName("periodRankList")
     private ArrayList<Rank> periodRankList;
 
+    @SerializedName("rank")
+    private String rank;
+
     public String getUserNo() {
         return userNo;
     }
@@ -70,5 +73,13 @@ public class Rank {
 
     public void setPeriodRankList(ArrayList<Rank> periodRankList) {
         this.periodRankList = periodRankList;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
     }
 }

@@ -111,9 +111,6 @@ public class BlankFragment3 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blank3, container, false);
 
-        image_back = (ImageView) view.findViewById(R.id.image_back);
-        Glide.with(this).load(R.drawable.cropheart2).into(image_back);
-
 
         image1 = (CircleImageView) view.findViewById(R.id.image1);
         contentUserNameTop = (TextView) view.findViewById(R.id.content_user_name_top);

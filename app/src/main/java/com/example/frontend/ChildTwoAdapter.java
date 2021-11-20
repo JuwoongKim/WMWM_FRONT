@@ -34,6 +34,7 @@ public class ChildTwoAdapter extends ArrayAdapter<Rank> {
         LayoutInflater vi = LayoutInflater.from(getContext());
         View cell = vi.inflate(R.layout.rank_title_layout, parent, false);
 
+        viewHolder.tv_rank = (TextView) cell.findViewById(R.id.tv_rank);
         viewHolder.tv_user_name = (TextView) cell.findViewById(R.id.tv_user_name);
         viewHolder.tv_total = (TextView) cell.findViewById(R.id.tv_total);
         cell.setTag(viewHolder);
@@ -42,6 +43,7 @@ public class ChildTwoAdapter extends ArrayAdapter<Rank> {
             return cell;
         }
 
+        viewHolder.tv_rank.setText(item.getRank());
         viewHolder.tv_user_name.setText(item.getUserName());
         String totalText = item.getTotal().trim()+" times";
         viewHolder.tv_total.setText(totalText);
@@ -52,6 +54,7 @@ public class ChildTwoAdapter extends ArrayAdapter<Rank> {
     // View lookup cache
     private static class ViewHolder {
 
+        TextView tv_rank;
         TextView tv_user_name;
         TextView tv_total;
 

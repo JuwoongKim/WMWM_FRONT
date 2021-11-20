@@ -101,27 +101,6 @@ public class ChildTwo extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_child_two,container,false);
 
-        viewPager =rootView.findViewById(R.id.child_two_container);
-        pagerAdapter = new ChildTwoPageAdapter(getChildFragmentManager(),getLifecycle());
-
-        viewPager.setAdapter(pagerAdapter);
-        viewPager.setCurrentItem(0);
-
-        childTwoOne_fragment=  new ChildTwoOne();
-        childTwoTwo_fragment= new ChildTwoTwo();
-        childTwoThree_fragment=  new ChildTwoThree();
-        childTwoFour_fragment= new ChildTwoFour();
-        childTwoFive_fragment=  new ChildTwoFive();
-
-        pagerAdapter.addFragment(childTwoOne_fragment);
-        pagerAdapter.addFragment(childTwoTwo_fragment);
-        pagerAdapter.addFragment(childTwoThree_fragment);
-        pagerAdapter.addFragment(childTwoFour_fragment);
-        pagerAdapter.addFragment(childTwoFive_fragment);
-
-        child_two_tabs = rootView.findViewById(R.id.child_two_tabs);
-
-        new TabLayoutMediator(child_two_tabs,viewPager,(tab, position) -> tab.setText(titles[position])).attach();
         sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
         sharedViewModel.getLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -131,6 +110,33 @@ public class ChildTwo extends Fragment {
                 System.out.println("userNo:"+userNo);
             }
         });
+
+        child_two_tabs = (TabLayout) rootView.findViewById(R.id.child_two_tabs);
+        child_two_tabs.bringToFront();
+
+        childTwoOne_fragment=  new ChildTwoOne();
+        childTwoTwo_fragment= new ChildTwoTwo();
+        childTwoThree_fragment=  new ChildTwoThree();
+        childTwoFour_fragment= new ChildTwoFour();
+        childTwoFive_fragment=  new ChildTwoFive();
+
+        viewPager = (ViewPager2) rootView.findViewById(R.id.child_two_container);
+        pagerAdapter = new ChildTwoPageAdapter(getChildFragmentManager(),getLifecycle());
+
+        pagerAdapter.addFragment(childTwoOne_fragment);
+        pagerAdapter.addFragment(childTwoTwo_fragment);
+        pagerAdapter.addFragment(childTwoThree_fragment);
+        pagerAdapter.addFragment(childTwoFour_fragment);
+        pagerAdapter.addFragment(childTwoFive_fragment);
+
+        viewPager.setAdapter(pagerAdapter);
+
+        viewPager.setCurrentItem(0);
+
+        child_two_tabs = rootView.findViewById(R.id.child_two_tabs);
+
+        new TabLayoutMediator(child_two_tabs,viewPager,(tab, position) -> tab.setText(titles[position])).attach();
+
 
         return rootView;
     }

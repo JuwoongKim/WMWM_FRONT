@@ -28,7 +28,7 @@
                 android:id="@+id/divider1"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:src="@color/bgTitleRight" />
+                android:src="@color/contentDividerLine" />
 
 
             <fragment
@@ -43,7 +43,7 @@
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:src="@color/bgTitleRight" />
+                android:src="@color/contentDividerLine" />
 
             <fragment
                 android:layout_width="match_parent"

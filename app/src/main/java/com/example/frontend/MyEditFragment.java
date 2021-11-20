@@ -144,8 +144,6 @@ public class MyEditFragment extends Fragment {
         contentMbti= (EditText) view.findViewById(R.id.content_mbti);
         contentUniv= (EditText) view.findViewById(R.id.content_major);
         saveBtn = (FloatingActionButton) view.findViewById(R.id.save_btn);
-        image_back = (ImageView) view.findViewById(R.id.image_back);
-        Glide.with(this).load(R.drawable.cropheart2).into(image_back);
 
         if (getArguments() != null)
         {

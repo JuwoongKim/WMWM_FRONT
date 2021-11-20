@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-<<<<<<< HEAD
         <domain includeSubdomains="true">192.168.0.108</domain>
         <domain includeSubdomains="true">172.16.100.234</domain>
         <domain includeSubdomains="true">192.168.155.142</domain>
         <domain includeSubdomains="true">192.168.0.23</domain>
-=======
-        <domain includeSubdomains="true">172.16.100.234</domain>
-        <domain includeSubdomains="true">192.168.155.142</domain>
-        <domain includeSubdomains="true">192.168.0.23</domain>
-
-
->>>>>>> 51944fa002c1d4552120182b53fbe59da7000000
     </domain-config>
 </network-security-config>

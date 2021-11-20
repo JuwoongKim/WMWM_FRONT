@@ -13,34 +13,36 @@
         android:id="@+id/main_text"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="150dp">
+        android:layout_marginTop="180dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
+
 
             <TextView
                 android:id="@+id/connect_text"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:gravity="center"
-                android:text="TO CONNECT"
+                android:text="CONNECT "
                 android:textColor="@color/btnRequest"
-                android:textSize="25sp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/hive_progress_layout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_below="@+id/connect_text"
+                android:layout_toRightOf="@+id/connect_text"
                 android:layout_marginBottom="30dp"
                 android:gravity="center">
 
                 <com.comix.overwatch.HiveProgressView
                     android:id="@+id/hive_progress"
-                    android:layout_width="60dp"
+                    android:layout_width="50dp"
                     android:layout_height="match_parent"
                     app:hive_animDuration="5000"
                     app:hive_cornerRadius="20"
@@ -48,6 +50,19 @@
                     app:hive_rainbow="true"
                     app:hive_shrink="true" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/connect_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/hive_progress_layout"
+                android:gravity="center"
+                android:text=" WITH FRIEND"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
 
 
 <!--            <TextView
@@ -71,11 +86,11 @@
 
     <FrameLayout
         android:id="@+id/button_back"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:background="@color/white">
+        android:layout_marginTop="150dp"
+        android:background="@color/btnRequest">
 
 
 
@@ -84,8 +99,8 @@
         <ImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/image_click"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/blacksquare"/>
 
 
@@ -97,14 +112,14 @@
         android:id="@+id/clickfin"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="450dp"
         android:src="@drawable/clickfin"/>
 
     <TextView
         android:id="@+id/click_text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="390dp"
         android:gravity="center"
         android:layout_below="@+id/hive_progress_layout"
         android:text="CLICK THE BUTTON ! "
