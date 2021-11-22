@@ -112,13 +112,13 @@ public class ChildTwo extends Fragment {
         });
 
         child_two_tabs = (TabLayout) rootView.findViewById(R.id.child_two_tabs);
-        child_two_tabs.bringToFront();
+        //child_two_tabs.bringToFront();
 
         childTwoOne_fragment=  new ChildTwoOne();
         childTwoTwo_fragment= new ChildTwoTwo();
         childTwoThree_fragment=  new ChildTwoThree();
-        childTwoFour_fragment= new ChildTwoFour();
-        childTwoFive_fragment=  new ChildTwoFive();
+        //childTwoFour_fragment= new ChildTwoFour();
+        //childTwoFive_fragment=  new ChildTwoFive();
 
         viewPager = (ViewPager2) rootView.findViewById(R.id.child_two_container);
         pagerAdapter = new ChildTwoPageAdapter(getChildFragmentManager(),getLifecycle());
@@ -126,8 +126,8 @@ public class ChildTwo extends Fragment {
         pagerAdapter.addFragment(childTwoOne_fragment);
         pagerAdapter.addFragment(childTwoTwo_fragment);
         pagerAdapter.addFragment(childTwoThree_fragment);
-        pagerAdapter.addFragment(childTwoFour_fragment);
-        pagerAdapter.addFragment(childTwoFive_fragment);
+        //pagerAdapter.addFragment(childTwoFour_fragment);
+        //pagerAdapter.addFragment(childTwoFive_fragment);
 
         viewPager.setAdapter(pagerAdapter);
 

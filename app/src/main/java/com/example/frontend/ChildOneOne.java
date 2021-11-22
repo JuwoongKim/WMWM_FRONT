@@ -138,21 +138,25 @@ public class ChildOneOne extends Fragment {
 
                             ArrayList<Entry> values = new ArrayList<>();
 
-                            if(wcount.getFive()!=0)  { values.add(new Entry(0, wcount.getFive()/2)); }
-                            else{values.add(new Entry(0, wcount.getFive()));}
+                            //if(wcount.getFive()!=0)  { values.add(new Entry(0, wcount.getFive()/2)); }
+                            //else{values.add(new Entry(0, wcount.getFive()));}
 
-                            if(wcount.getFour()!=0)  { values.add(new Entry(1, wcount.getFour()/2)); }
-                            else{values.add(new Entry(1, wcount.getFour()));}
+                            values.add(new Entry(0, wcount.getFive()));
+                            //if(wcount.getFour()!=0)  { values.add(new Entry(1, wcount.getFour()/2)); }
+                            //else{values.add(new Entry(1, wcount.getFour()));}
+                            values.add(new Entry(1, wcount.getFour()));
 
-                            if(wcount.getThree()!=0)  { values.add(new Entry(2, wcount.getThree()/2)); }
-                            else{values.add(new Entry(2, wcount.getThree()));}
+                            //if(wcount.getThree()!=0)  { values.add(new Entry(2, wcount.getThree()/2)); }
+                            //else{values.add(new Entry(2, wcount.getThree()));}
+                            values.add(new Entry(2, wcount.getThree()));
 
-                            if(wcount.getTwo()!=0)  { values.add(new Entry(3, wcount.getTwo()/2)); }
-                            else{values.add(new Entry(3, wcount.getTwo()));}
+                           //if(wcount.getTwo()!=0)  { values.add(new Entry(3, wcount.getTwo()/2)); }
+                            //else{values.add(new Entry(3, wcount.getTwo()));}
+                            values.add(new Entry(3, wcount.getTwo()));
 
-                            if(wcount.getOne()!=0)  { values.add(new Entry(4, wcount.getOne()/2)); }
-                            else{values.add(new Entry(4, wcount.getOne()));}
-
+                            //if(wcount.getOne()!=0)  { values.add(new Entry(4, wcount.getOne()/2)); }
+                            //else{values.add(new Entry(4, wcount.getOne()));}
+                            values.add(new Entry(4, wcount.getOne()));
 
                             LineDataSet set1;
                             set1 = new LineDataSet(values, "DataSet 1 ");

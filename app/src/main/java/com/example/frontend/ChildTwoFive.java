@@ -94,7 +94,7 @@ public class ChildTwoFive extends Fragment {
             @Override
             public void onChanged(@Nullable String s) {
                 userNo = s;
-                period = "1";   //1months before
+                period = "0";   //1months before
                 rankList = new ArrayList<Rank>();
 
                 iRetrofit = RetrofitClient.getClient().create(IRetrofit.class);

@@ -127,7 +127,11 @@ public class ChildOneTwo extends Fragment {
                             System.out.println("======SIBALLLLLLLLLL========");
                             System.out.println("==============");
                             System.out.println(hcount.getOne());
+                            System.out.println("======SIBALLLLLLLLLL========");
+                            System.out.println("==============");
                             System.out.println(hcount.getTwo());
+                            System.out.println("======SIBALLLLLLLLLL========");
+                            System.out.println("==============");
                             System.out.println(hcount.getThree());
                             System.out.println("==============");
 

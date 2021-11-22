@@ -1,5 +1,6 @@
 package com.example.frontend;
 
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 
@@ -8,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -124,21 +128,37 @@ public class ChildOneThree extends Fragment {
 
                             cardList = response.body().getCardInfo();
 
-                            for( Card card : cardList)
-                            {
-                                System.out.println(card.getMbti());
+                            if(cardList.size() != 0 && cardList != null){
+                                for( Card card : cardList)
+                                {
+                                    System.out.println(card.getMbti());
+                                }
+
+                                mbtiCount = Integer.toString(cardList.size());
+
+                                System.out.println("당신과 같은  MBTI 수는 ");
+                                System.out.println(mbtiCount);
+                                System.out.println("=========");
+
+                                // if(mbtiCount=0){
+
+                                //}
+
+                                String str = "당신의 MBTI " + cardList.get(0).getMbti()+"와 같은";
+                                SpannableStringBuilder ssb = new SpannableStringBuilder(str);
+                                ssb.setSpan(new ForegroundColorSpan(Color.parseColor("#ffbf12")), 8, 13, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                                mbtiName.setText(ssb);
+                                mbtiName2.setText(mbtiCount);
+                                mbtiName.setAnimation(anim);
+                                mbtiName2.setAnimation(anim);
+                            }else{
+                                mbtiName.setText("당신의 MBTI와 같은");
+                                mbtiName2.setText("0");
                             }
 
-                            mbtiCount = Integer.toString(cardList.size());
 
-                            System.out.println("당신과 같은  MBTI 수는 ");
-                            System.out.println(mbtiCount);
-                            System.out.println("=========");
 
-                            mbtiName.setText(cardList.get(0).getMbti());
-                            mbtiName2.setText(mbtiCount);
-                            mbtiName.setAnimation(anim);
-                            mbtiName2.setAnimation(anim);
                         }
                     }
 

@@ -21,30 +21,30 @@
             android:textSize="10sp"
             android:text="" />
 
-        <TextView
+<!--        <TextView
             android:id="@+id/onethree1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textAlignment="center"
-            android:text="당신의  MBTI" />
+            android:text="당신의  MBTI" />-->
 
         <TextView
             android:id="@+id/onethree2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:textColor="@color/btnRequest"
+            android:textColor="@color/black"
             android:textAlignment="center"
-            android:text="ENFP" />
+            android:text="당신의 MBTI ENFP와 같은" />
 
-        <TextView
+<!--        <TextView
             android:id="@+id/onethree3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textAlignment="center"
-            android:text="와 같은" />
+            android:text="와 같은" />-->
 
         <TextView
             android:id="@+id/emptymiddle"
